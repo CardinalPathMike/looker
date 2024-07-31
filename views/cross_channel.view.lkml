@@ -197,7 +197,8 @@ view: cross_channel {
     sql: (${spend}/ NULLIF(${impressions},0)) * 1000 ;;
   }
 
-##  o CPM = Spend / Impressions * 1000
+##  o CPC = Spend / clicks
+
   measure: CPC {
     type: number
     value_format_name: usd
