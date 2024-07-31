@@ -80,33 +80,42 @@ view: creative_data {
     sql: ${TABLE}.`Ad Type` ;;
   }
 
+### Measures
+
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-##Connected Fitness metrics:
-
 ## ----------All raw metrics --------
 ## Impressions
 
-  measure: impressions {
-    type: sum
-    sql: ${TABLE}.Impressions ;;
-  }
 
-## Clicks
   measure: clicks {
     type: sum
-    sql: ${TABLE}.Clicks ;;
+    sql: PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')) ;;
   }
 
-## Spend
+  measure: impressions {
+    type: sum
+    sql: PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+')) ;;
+  }
+
   measure: spend {
-    type: number
-    sql: ${TABLE}.Spend ;;
+    type: sum
+    sql: ${TABLE}.` Spend ` ;;
     value_format_name: usd
   }
 
+
+  measure: filtered_clicks {
+    type: number
+    sql: ${TABLE}.`Filtered Clicks` ;;
+  }
+
+  measure: filtered_impressions {
+    type: number
+    sql: ${TABLE}.`Filtered Impressions` ;;
+  }
 
 ##  Total CF ATCs (Add to Carts)
   measure: total_cf_atcs {
@@ -127,41 +136,9 @@ view: creative_data {
     sql: ${TABLE}.`Total Sessions` ;;
   }
 
-
-
   measure: paid_social_impressions {
     type: sum
     sql: ${TABLE}.`Paid Social Impressions` ;;
-  }
-
-  measure: amazon_video_impressions {
-    type: sum
-    sql: ${TABLE}.`Amazon Video Impressions` ;;
-  }
-  measure: youtube_impressions {
-    type: sum
-    sql: ${TABLE}.`Youtube Impressions` ;;
-  }
-
-  measure: filtered_impressions {
-    type: sum
-    sql: ${TABLE}.`Filtered Impressions` ;;
-  }
-
-# ???? Is this just "template trash"
-  measure: count {
-    type: count
-  }
-
-  measure: filtered_clicks {
-    type: sum
-    sql: ${TABLE}.`Filtered Clicks` ;;
-  }
-
-  # Video Views
-  measure: video_views {
-    type: sum
-    sql: ${TABLE}.`Video Views` ;;
   }
 
   measure: 2_3_sec_video_views {
@@ -174,45 +151,73 @@ view: creative_data {
     sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
   }
 
+  measure: amazon_video_impressions {
+    type: sum
+    sql: ${TABLE}.`Amazon Video Impressions` ;;
+  }
 
-# Built Measures Start
+  measure: app_30_dt {
+    type: sum
+    sql: ${TABLE}.`App 30Dt` ;;
+  }
+
+  measure: app_one_30_dt {
+    type: sum
+    sql: ${TABLE}.`App One 30Dt` ;;
+  }
+
+  measure: app_plus_30_dt {
+    type: sum
+    sql: ${TABLE}.`App Plus 30Dt` ;;
+  }
+
+  measure: total_app_installs {
+    type: sum
+    sql: ${TABLE}.`Total App Installs` ;;
+  }
+
+  measure: video_views {
+    type: sum
+    sql: ${TABLE}.`Video Views` ;;
+  }
+
+  measure: you_tube_impressions {
+    type:sum
+    sql: ${TABLE}.`YouTube Impressions` ;;
+  }
+
+  measure: count {
+    type: count
+  }
+
 ##---------------All efficiency metrics---------------------
 
 ##  o CTR = Filtered Clicks / Filtered Impressions
   measure: CTR {
     type: number
     value_format_name: percent_2
-    sql: ${filtered_clicks}/ NULLIF(${filtered_impressions},0) ;;
+    sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
 ##  o CPM = Spend / Impressions * 1000
   measure: CPM {
     type: number
     value_format_name: usd
-    sql: (${spend}/ NULLIF(${impressions},0)) * 1000 ;;
+    sql: (sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+')) ,0))) * 1000 ;;
   }
-
-##  o YouTube VVR = Video Views / YouTube Impressions
-  measure: YouTubeVVR {
-    type: number
-    value_format_name: percent_2
-    sql: ${video_views}/ NULLIF(${youtube_impressions},0) ;;
-  }
-
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: AmazonVRR {
     type: number
     value_format_name: percent_2
-    sql: ${amazon_video_1_p_page_views}/ NULLIF(${amazon_video_impressions},0) ;;
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
-
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: SocialTSR {
     type: number
     value_format_name: percent_2
-    sql: ${2_3_sec_video_views}/ NULLIF(${paid_social_impressions},0) ;;
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
   }
 
 ## CF CAC, CF CPATC, CPI, CPT, CPV are all $ values
@@ -220,35 +225,35 @@ view: creative_data {
   measure: CF_CAC {
     type: number
     value_format_name: usd
-    sql: ${spend}/ NULLIF(${total_cf_sales},0) ;;
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) ;;
   }
 
 ##  o CF CVR = Total CF Sales / Clicks
   measure: CF_CVR {
     type: number
     value_format_name: percent_2
-    sql: ${total_cf_sales}/ NULLIF(${clicks},0) ;;
+    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ##  o CF CPATC = Spend / Total CF ATCs
   measure: CF_CPATC {
     type: number
     value_format_name: usd
-    sql: ${spend}/ NULLIF(${total_cf_atcs},0) ;;
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
   }
 
 ##  o CF ATC Rate = Total CF ATCs / Clicks
   measure: CF_ATC_Rate {
     type: number
     value_format_name: percent_2
-    sql: ${total_cf_atcs}/ NULLIF(${clicks},0) ;;
+    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ##  o CPV = Spend / Total Sessions
   measure: CPV {
     type: number
     value_format_name: usd
-    sql: ${spend}/ NULLIF(${total_sessions},0) ;;
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
 
 ##--------------Metrics specific to funnel level---------------------------
@@ -258,21 +263,56 @@ view: creative_data {
   measure: YouTube_VVR {
     type: number
     value_format_name: percent_2
-    sql: ${video_views}/ NULLIF(${youtube_impressions},0) ;;
+    sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: Amazon_VRR{
     type: number
     value_format_name: percent_2
-    sql: ${amazon_video_1_p_page_views}/ NULLIF(${amazon_video_impressions},0) ;;
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: Social_TSR{
     type: number
     value_format_name: percent_2
-    sql: ${2_3_sec_video_views}/ NULLIF(${paid_social_impressions},0) ;;
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+  }
+
+##  o CPI = Spend / Total App Installs
+  measure: CPI {
+    type: number
+    value_format_name: usd
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total App Installs`,0)) ;;
+  }
+
+##  o Install CVR = Total App Installs / Clicks
+  measure: Install_CVR {
+    type: number
+    value_format_name: percent_2
+    sql: sum(NULLIF(${TABLE}.`Total App Installs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+  }
+
+##  o CPT = Spend / App 30DT
+  measure: CPT {
+    type: number
+    value_format_name: usd
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`App 30Dt`,0)) ;;
+  }
+
+##  o Trial CVR = App 30DT / Clicks
+  measure: Trial_CVR {
+    type: number
+    value_format_name: percent_2
+    sql: sum(NULLIF(${TABLE}.`App 30Dt`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+  }
+
+## CPC = Spend / clicks
+  measure: CostPerClick {
+    type: number
+    value_format_name: usd
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 
