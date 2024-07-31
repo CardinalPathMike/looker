@@ -335,8 +335,7 @@ view: cross_channel {
 
   measure: KPI_Metric_1 {
     type: number
-    sql: ${TABLE}.{% parameter KPI_Comparison_1 %} ;;
-    value_format_name: "usd"
+    sql: {% parameter KPI_Comparison_1 %} ;;
   }
 
 ## KPI Comparison 2
