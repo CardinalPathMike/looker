@@ -35,12 +35,6 @@ measure: 2_3_sec_video_views {
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  measure: total_amazon_video_impressions {
-    type: sum
-    sql: ${amazon_video_impressions} ;;  }
-  measure: average_amazon_video_impressions {
-    type: average
-    sql: ${amazon_video_impressions} ;;  }
 
   dimension: business {
     type: string

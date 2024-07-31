@@ -29,3 +29,6 @@ explore: cross_channel_data {}
 
 explore: creative_data {}
 
+explore: new_cross_channel {}
+
+explore: new_creative_data {}
