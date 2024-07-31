@@ -25,10 +25,6 @@ persist_with: peloton_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: cross_channel_data {}
+explore: cross_channel {}
 
 explore: creative_data {}
-
-explore: new_cross_channel {}
-
-explore: new_creative_data {}

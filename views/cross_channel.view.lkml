@@ -1,8 +1,8 @@
-# The name of this view in Looker is "New Creative Data"
-view: creative_data {
+# The name of this view in Looker is "New Cross Channel"
+view: cross_channel {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `cardinal-path.peloton.new_creative_data` ;;
+  sql_table_name: `cardinal-path.peloton.new_cross_channel` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -11,16 +11,24 @@ view: creative_data {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "2 3 Sec Video Views" in Explore.
 
-
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: week_of {
+
+  dimension_group: date {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.`Week of Date` ;;
+    sql: ${TABLE}.Date ;;
+  }
+
+  dimension_group: week {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.Week ;;
   }
 
   dimension: business {
@@ -43,14 +51,14 @@ view: creative_data {
     sql: ${TABLE}.Channel ;;
   }
 
-  dimension: creative_message {
-    type: string
-    sql: ${TABLE}.`Creative Message` ;;
+  dimension: filtered_clicks {
+    type: number
+    sql: ${TABLE}.`Filtered Clicks` ;;
   }
 
-  dimension: dimension {
-    type: string
-    sql: ${TABLE}.Dimension ;;
+  dimension: filtered_impressions {
+    type: number
+    sql: ${TABLE}.`Filtered Impressions` ;;
   }
 
   dimension: lob {
@@ -63,28 +71,16 @@ view: creative_data {
     sql: ${TABLE}.Market ;;
   }
 
-
-  dimension: creative_concept {
-    type: string
-    sql: ${TABLE}.`Creative Concept` ;;
-  }
-
-
   dimension: partner {
     type: string
     sql: ${TABLE}.Partner ;;
   }
 
-  dimension: ad_type {
-    type: string
-    sql: ${TABLE}.`Ad Type` ;;
-  }
+### Measures
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
-
-##Connected Fitness metrics:
 
 ## ----------All raw metrics --------
 ## Impressions
@@ -106,7 +102,6 @@ view: creative_data {
     sql: ${TABLE}.Spend ;;
     value_format_name: usd
   }
-
 
 ##  Total CF ATCs (Add to Carts)
   measure: total_cf_atcs {
@@ -134,36 +129,6 @@ view: creative_data {
     sql: ${TABLE}.`Paid Social Impressions` ;;
   }
 
-  measure: amazon_video_impressions {
-    type: sum
-    sql: ${TABLE}.`Amazon Video Impressions` ;;
-  }
-  measure: youtube_impressions {
-    type: sum
-    sql: ${TABLE}.`Youtube Impressions` ;;
-  }
-
-  measure: filtered_impressions {
-    type: sum
-    sql: ${TABLE}.`Filtered Impressions` ;;
-  }
-
-# ???? Is this just "template trash"
-  measure: count {
-    type: count
-  }
-
-  measure: filtered_clicks {
-    type: sum
-    sql: ${TABLE}.`Filtered Clicks` ;;
-  }
-
-  # Video Views
-  measure: video_views {
-    type: sum
-    sql: ${TABLE}.`Video Views` ;;
-  }
-
   measure: 2_3_sec_video_views {
     type: sum
     sql: ${TABLE}.`2_3 sec video views` ;;
@@ -174,8 +139,46 @@ view: creative_data {
     sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
   }
 
+  measure: amazon_video_impressions {
+    type: sum
+    sql: ${TABLE}.`Amazon Video Impressions` ;;
+  }
 
-# Built Measures Start
+  measure: app_30_dt {
+    type: sum
+    sql: ${TABLE}.`App 30Dt` ;;
+  }
+
+  measure: app_one_30_dt {
+    type: sum
+    sql: ${TABLE}.`App One 30Dt` ;;
+  }
+
+  measure: app_plus_30_dt {
+    type: sum
+    sql: ${TABLE}.`App Plus 30Dt` ;;
+  }
+
+  measure: total_app_installs {
+    type: sum
+    sql: ${TABLE}.`Total App Installs` ;;
+  }
+
+  measure: video_views {
+    type: sum
+    sql: ${TABLE}.`Video Views` ;;
+  }
+
+  measure: you_tube_impressions {
+    type:sum
+    sql: ${TABLE}.`YouTube Impressions` ;;
+  }
+
+  measure: count {
+    type: count
+  }
+
+
 ##---------------All efficiency metrics---------------------
 
 ##  o CTR = Filtered Clicks / Filtered Impressions
@@ -196,7 +199,7 @@ view: creative_data {
   measure: YouTubeVVR {
     type: number
     value_format_name: percent_2
-    sql: ${video_views}/ NULLIF(${youtube_impressions},0) ;;
+    sql: ${video_views}/ NULLIF(${you_tube_impressions},0) ;;
   }
 
 
@@ -258,7 +261,7 @@ view: creative_data {
   measure: YouTube_VVR {
     type: number
     value_format_name: percent_2
-    sql: ${video_views}/ NULLIF(${youtube_impressions},0) ;;
+    sql: ${video_views}/ NULLIF(${you_tube_impressions},0) ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
@@ -273,6 +276,62 @@ view: creative_data {
     type: number
     value_format_name: percent_2
     sql: ${2_3_sec_video_views}/ NULLIF(${paid_social_impressions},0) ;;
+  }
+
+##------------------ Mid funnel KPIs -------------------------------------
+##  o CPV = Spend / Total Sessions
+## Already Above
+
+##------------- Lower funnel (capture) KPIs ------------------------------
+##  o CF CAC = Spend / Total CF Sales - Above
+##  o CF CVR = Total CF Sales / Clicks - Above
+##  o CF CPATC = Spend / Total CF ATCs - Above
+##  o CF ATC Rate = Total CF ATCs / Clicks - Above
+
+## ---------------- App metrics ------------------------------------------
+##• All raw metrics:
+##  o Impressions
+##  o Clicks
+##  o Spend
+##  o Total App Installs
+##  o App 30DT
+##  o App One 30DT
+##  o App Plus 30DT
+##  o Total Sessions
+
+
+
+## -------------- All efficiency metrics -----------------------------
+
+##  o CTR = Filtered Clicks / Filtered Impressions
+##  o CPM = Spend / Impressions * 1000
+
+##  o CPI = Spend / Total App Installs
+  measure: CPI {
+    type: number
+    value_format_name: usd
+    sql: ${spend}/ NULLIF(${total_app_installs},0) ;;
+  }
+
+##  o Install CVR = Total App Installs / Clicks
+  measure: Install_CVR {
+    type: number
+    value_format_name: percent_2
+    sql: ${total_app_installs}/ NULLIF(${clicks},0) ;;
+  }
+
+##  o CPT = Spend / App 30DT
+  measure: CPT {
+    type: number
+    value_format_name: usd
+    sql: ${spend}/ NULLIF(${app_30_dt},0) ;;
+  }
+
+##  o Trial CVR = App 30DT / Clicks
+  measure: Trial_CVR {
+    type: number
+    value_format_name: percent_2
+    sql: ${app_30_dt}/ NULLIF(${clicks},0) ;;
   }
 
 
