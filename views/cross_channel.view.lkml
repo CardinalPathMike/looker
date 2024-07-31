@@ -199,7 +199,7 @@ view: cross_channel {
 
 ##  o CPC = Spend / clicks
 
-  measure: CPC {
+  measure: CostPerClick {
     type: number
     value_format_name: usd
     sql: ${spend}/ NULLIF(${clicks},0) ;;
