@@ -124,8 +124,6 @@ view: cross_channel {
     sql: ${TABLE}.`Total Sessions` ;;
   }
 
-
-
   measure: paid_social_impressions {
     type: sum
     sql: ${TABLE}.`Paid Social Impressions` ;;
@@ -180,7 +178,6 @@ view: cross_channel {
     type: count
   }
 
-
 ##---------------All efficiency metrics---------------------
 
 ##  o CTR = Filtered Clicks / Filtered Impressions
@@ -198,21 +195,11 @@ view: cross_channel {
   }
 
 ##  o CPC = Spend / clicks
-
   measure: CostPerClick {
     type: number
     value_format_name: usd
     sql: ${spend}/ NULLIF(${clicks},0) ;;
   }
-
-
-##  o YouTube VVR = Video Views / YouTube Impressions
-  measure: YouTubeVVR {
-    type: number
-    value_format_name: percent_2
-    sql: ${video_views}/ NULLIF(${you_tube_impressions},0) ;;
-  }
-
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: AmazonVRR {
@@ -220,7 +207,6 @@ view: cross_channel {
     value_format_name: percent_2
     sql: ${amazon_video_1_p_page_views}/ NULLIF(${amazon_video_impressions},0) ;;
   }
-
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: SocialTSR {
@@ -288,34 +274,6 @@ view: cross_channel {
     value_format_name: percent_2
     sql: ${2_3_sec_video_views}/ NULLIF(${paid_social_impressions},0) ;;
   }
-
-##------------------ Mid funnel KPIs -------------------------------------
-##  o CPV = Spend / Total Sessions
-## Already Above
-
-##------------- Lower funnel (capture) KPIs ------------------------------
-##  o CF CAC = Spend / Total CF Sales - Above
-##  o CF CVR = Total CF Sales / Clicks - Above
-##  o CF CPATC = Spend / Total CF ATCs - Above
-##  o CF ATC Rate = Total CF ATCs / Clicks - Above
-
-## ---------------- App metrics ------------------------------------------
-##• All raw metrics:
-##  o Impressions
-##  o Clicks
-##  o Spend
-##  o Total App Installs
-##  o App 30DT
-##  o App One 30DT
-##  o App Plus 30DT
-##  o Total Sessions
-
-
-
-## -------------- All efficiency metrics -----------------------------
-
-##  o CTR = Filtered Clicks / Filtered Impressions
-##  o CPM = Spend / Impressions * 1000
 
 ##  o CPI = Spend / Total App Installs
   measure: CPI {
