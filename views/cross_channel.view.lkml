@@ -180,28 +180,28 @@ view: cross_channel {
 
 ##  o CTR = Filtered Clicks / Filtered Impressions
   measure: CTR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
 ##  o CPM = Spend / Impressions * 1000
   measure: CPM {
-    type: sum
+    type: number
     value_format_name: usd
     sql: (sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+')) ,0))) * 1000 ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: AmazonVRR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: SocialTSR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
   }
@@ -209,35 +209,35 @@ view: cross_channel {
 ## CF CAC, CF CPATC, CPI, CPT, CPV are all $ values
 ##  o CF CAC = spend / Total CF Sales
   measure: CF_CAC {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) ;;
   }
 
 ##  o CF CVR = Total CF Sales / Clicks
   measure: CF_CVR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ##  o CF CPATC = Spend / Total CF ATCs
   measure: CF_CPATC {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
   }
 
 ##  o CF ATC Rate = Total CF ATCs / Clicks
   measure: CF_ATC_Rate {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ##  o CPV = Spend / Total Sessions
   measure: CPV {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
@@ -247,56 +247,56 @@ view: cross_channel {
 
 ##  o YouTube VVR = Video Views / YouTube Impressions
   measure: YouTube_VVR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: Amazon_VRR{
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: Social_TSR{
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
   }
 
 ##  o CPI = Spend / Total App Installs
   measure: CPI {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total App Installs`,0)) ;;
   }
 
 ##  o Install CVR = Total App Installs / Clicks
   measure: Install_CVR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(NULLIF(${TABLE}.`Total App Installs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ##  o CPT = Spend / App 30DT
   measure: CPT {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`App 30Dt`,0)) ;;
   }
 
 ##  o Trial CVR = App 30DT / Clicks
   measure: Trial_CVR {
-    type: sum
+    type: number
     value_format_name: percent_2
     sql: sum(NULLIF(${TABLE}.`App 30Dt`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
 
 ## CPC = Spend / clicks
   measure: CostPerClick {
-    type: sum
+    type: number
     value_format_name: usd
     sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
   }
