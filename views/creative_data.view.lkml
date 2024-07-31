@@ -1,4 +1,5 @@
 # The name of this view in Looker is "New Creative Data"
+
 view: creative_data {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
@@ -7,9 +8,9 @@ view: creative_data {
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
 
-    # Here's what a typical dimension looks like in LookML.
-    # A dimension is a groupable field that can be used to filter query results.
-    # This dimension will be called "2 3 Sec Video Views" in Explore.
+  # Here's what a typical dimension looks like in LookML.
+  # A dimension is a groupable field that can be used to filter query results.
+  # This dimension will be called "2 3 Sec Video Views" in Explore.
 
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
@@ -92,12 +93,12 @@ view: creative_data {
 
   measure: clicks {
     type: sum
-    sql: PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')) ;;
+    sql: ${TABLE}.`Clicks` ;;
   }
 
   measure: impressions {
     type: sum
-    sql: PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+')) ;;
+    sql: ${TABLE}.`Impressions` ;;
   }
 
   measure: spend {
@@ -203,7 +204,7 @@ view: creative_data {
   measure: CPM {
     type: number
     value_format_name: usd
-    sql: (sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+')) ,0))) * 1000 ;;
+    sql: (sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Impressions` ,0))) * 1000 ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
@@ -232,7 +233,7 @@ view: creative_data {
   measure: CF_CVR {
     type: number
     value_format_name: percent_2
-    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 ##  o CF CPATC = Spend / Total CF ATCs
@@ -246,7 +247,7 @@ view: creative_data {
   measure: CF_ATC_Rate {
     type: number
     value_format_name: percent_2
-    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 ##  o CPV = Spend / Total Sessions
@@ -291,7 +292,7 @@ view: creative_data {
   measure: Install_CVR {
     type: number
     value_format_name: percent_2
-    sql: sum(NULLIF(${TABLE}.`Total App Installs`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+    sql: sum(NULLIF(${TABLE}.`Total App Installs`,0))/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 ##  o CPT = Spend / App 30DT
@@ -305,14 +306,14 @@ view: creative_data {
   measure: Trial_CVR {
     type: number
     value_format_name: percent_2
-    sql: sum(NULLIF(${TABLE}.`App 30Dt`,0))/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+    sql: sum(NULLIF(${TABLE}.`App 30Dt`,0))/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 ## CPC = Spend / clicks
   measure: CostPerClick {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0)) ;;
+    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 
