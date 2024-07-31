@@ -298,7 +298,7 @@ view: cross_channel {
   measure: CostPerClick {
     type: number
     value_format_name: usd
-    sql: ${spend} ;;
+    sql: ${spend}/ NULLIF(${clicks},0) ;;
   }
 
 
