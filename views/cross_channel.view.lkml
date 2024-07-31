@@ -198,7 +198,7 @@ view: cross_channel {
   measure: CostPerClick {
     type: number
     value_format_name: usd
-    sql: ${spend}/ NULLIF(${clicks},0) ;;
+    sql: ${spend}/ NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0) ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
