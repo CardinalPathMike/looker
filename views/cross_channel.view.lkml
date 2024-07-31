@@ -51,15 +51,7 @@ view: cross_channel {
     sql: ${TABLE}.Channel ;;
   }
 
-  dimension: filtered_clicks {
-    type: number
-    sql: ${TABLE}.`Filtered Clicks` ;;
-  }
 
-  dimension: filtered_impressions {
-    type: number
-    sql: ${TABLE}.`Filtered Impressions` ;;
-  }
 
   dimension: lob {
     type: string
@@ -93,7 +85,7 @@ view: cross_channel {
 
   measure: impressions {
     type: sum
-    sql: ${TABLE}.` Impressions ` ;;
+    sql: CAST(${TABLE}.` Impressions ` as INT64) ;;
   }
 
   measure: spend {
@@ -102,6 +94,16 @@ view: cross_channel {
     value_format_name: usd
   }
 
+
+  measure: filtered_clicks {
+    type: number
+    sql: ${TABLE}.`Filtered Clicks` ;;
+  }
+
+  measure: filtered_impressions {
+    type: number
+    sql: ${TABLE}.`Filtered Impressions` ;;
+  }
 
 ##  Total CF ATCs (Add to Carts)
   measure: total_cf_atcs {
