@@ -80,12 +80,12 @@ view: cross_channel {
 
   measure: clicks {
     type: sum
-    sql: PARSE_NUMERIC(REPLACE(RTRIM(${TABLE}.` Clicks `),'-','')) ;;
+    sql: PARSE_NUMERIC(REGEX_EXTRACT(${TABLE}.` Clicks `,'\d+')) ;;
   }
 
   measure: impressions {
     type: sum
-    sql: PARSE_NUMERIC(REPLACE(RTRIM(${TABLE}.` Impressions `),'-','')) ;;
+    sql: PARSE_NUMERIC(REGEX_EXTRACT(${TABLE}.` Impressions `,'\d+')) ;;
   }
 
   measure: spend {
