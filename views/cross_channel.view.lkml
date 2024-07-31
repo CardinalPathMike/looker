@@ -85,23 +85,23 @@ view: cross_channel {
 ## ----------All raw metrics --------
 ## Impressions
 
-  measure: impressions {
-    type: sum
-    sql: ${TABLE}.Impressions ;;
-  }
 
-## Clicks
   measure: clicks {
     type: sum
-    sql: ${TABLE}.Clicks ;;
+    sql: ${TABLE}.` Clicks ` ;;
   }
 
-## Spend
+  measure: impressions {
+    type: sum
+    sql: ${TABLE}.` Impressions ` ;;
+  }
+
   measure: spend {
-    type: number
-    sql: ${TABLE}.Spend ;;
+    type: sum
+    sql: ${TABLE}.` Spend ` ;;
     value_format_name: usd
   }
+
 
 ##  Total CF ATCs (Add to Carts)
   measure: total_cf_atcs {
