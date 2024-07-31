@@ -1,5 +1,6 @@
 # The name of this view in Looker is "New Creative Data"
 
+
 view: creative_data {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
@@ -103,7 +104,7 @@ view: creative_data {
 
   measure: spend {
     type: sum
-    sql: ${TABLE}.` Spend ` ;;
+    sql: ${TABLE}.`Spend` ;;
     value_format_name: usd
   }
 
@@ -204,7 +205,7 @@ view: creative_data {
   measure: CPM {
     type: number
     value_format_name: usd
-    sql: (sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Impressions` ,0))) * 1000 ;;
+    sql: (sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Impressions` ,0))) * 1000 ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
@@ -226,7 +227,7 @@ view: creative_data {
   measure: CF_CAC {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) ;;
   }
 
 ##  o CF CVR = Total CF Sales / Clicks
@@ -240,7 +241,7 @@ view: creative_data {
   measure: CF_CPATC {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
   }
 
 ##  o CF ATC Rate = Total CF ATCs / Clicks
@@ -254,7 +255,7 @@ view: creative_data {
   measure: CPV {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
 
 ##--------------Metrics specific to funnel level---------------------------
@@ -285,7 +286,7 @@ view: creative_data {
   measure: CPI {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Total App Installs`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Total App Installs`,0)) ;;
   }
 
 ##  o Install CVR = Total App Installs / Clicks
@@ -299,7 +300,7 @@ view: creative_data {
   measure: CPT {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`App 30Dt`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`App 30Dt`,0)) ;;
   }
 
 ##  o Trial CVR = App 30DT / Clicks
@@ -313,7 +314,7 @@ view: creative_data {
   measure: CostPerClick {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.` Spend `)/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
+    sql: sum( ${TABLE}.`Spend`)/ sum(NULLIF(${TABLE}.`Clicks`,0)) ;;
   }
 
 
