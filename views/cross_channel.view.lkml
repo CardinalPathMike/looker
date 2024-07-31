@@ -192,13 +192,6 @@ view: cross_channel {
     sql: (${spend}/ NULLIF(${impressions},0)) * 1000 ;;
   }
 
-##  o CPC = Spend / clicks
-  measure: CostPerClick {
-    type: number
-    value_format_name: usd
-    sql: ${spend} ;;
-  }
-
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: AmazonVRR {
     type: number
@@ -301,22 +294,75 @@ view: cross_channel {
     sql: ${app_30_dt}/ NULLIF(${clicks},0) ;;
   }
 
-# Build Dynamic Elements
-  parameter: item_to_add_up {
+## CPC = Spend / clicks
+  measure: CostPerClick {
+    type: number
+    value_format_name: usd
+    sql: ${spend} ;;
+  }
+
+
+# Parameters Needed
+## KPI Comparison 1
+##  Impressions
+##  Clicks
+##  Spend
+##  Total CF Sales
+##  Total Sessions
+##  Qualified Visitors
+##  Bike Sales
+##  Tread Sales
+
+  parameter: KPI_Comparison_1{
     type: unquoted
     allowed_value: {
       label: "Impressions"
-      value: "sale_price"
-    }
-    allowed_value: {
-      label: "CVR"
-      value: "cost"
+      value: "PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+'))"
     }
     allowed_value: {
       label: "Clicks"
-      value: "profit"
+      value: "PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+'))"
+    }
+    allowed_value: {
+      label: "Total CF Sales"
+      value: "${TABLE}.`Total CF Sales`"
+    }
+    allowed_value: {
+      label: "Total Sessions"
+      value: "${TABLE}.`Total Sessions`"
     }
   }
+
+  measure: KPI_Metric_1 {
+    type: sum
+    sql: ${TABLE}.{% parameter KPI_Comparison_1 %} ;;
+    value_format_name: "usd"
+  }
+
+## KPI Comparison 2
+##  CTR
+##  CPC
+##  CPM
+##  TSR
+##  VVR
+##  AMZ Vid RR
+##  CF CVR
+##  CF CAC
+##  CF CPATC
+##  CF ATC Rate
+##  CPV
+##
+## Channel Contribution
+##  Impressions
+##  Clicks
+##  Spend
+##  CF Sales
+##  CF ATCs
+##  Total Sessions
+##  Bike Sales
+##  Tread Sales
+
+
 
 
 }
