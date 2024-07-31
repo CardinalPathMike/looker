@@ -1,157 +1,159 @@
 # The name of this view in Looker is "Creative Data"
 view: creative_data {
-  # The sql_table_name parameter indicates the underlying database table
-  # to be used for all fields in this view.
-  sql_table_name: `peloton.creative_data` ;;
 
-  # No primary key is defined for this view. In order to join this view in an Explore,
-  # define primary_key: yes on a dimension that has no repeated values.
+    # The sql_table_name parameter indicates the underlying database table
+    # to be used for all fields in this view.
+    sql_table_name: `cardinal-path.peloton.new_creative_data` ;;
+
+    # No primary key is defined for this view. In order to join this view in an Explore,
+    # define primary_key: yes on a dimension that has no repeated values.
 
     # Here's what a typical dimension looks like in LookML.
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "2 3 Sec Video Views" in Explore.
 
-  dimension: 2_3_sec_video_views {
-    type: number
-    sql: ${TABLE}.`2_3 sec video views` ;;
-  }
+    measure: 2_3_sec_video_views {
+      type: sum
+      sql: ${TABLE}.`2_3 sec video views` ;;
+    }
 
-  dimension: ad_type {
-    type: string
-    sql: ${TABLE}.`Ad Type` ;;
-  }
+    dimension: ad_type {
+      type: string
+      sql: ${TABLE}.`Ad Type` ;;
+    }
 
-  dimension: amazon_video_1_p_page_views {
-    type: number
-    sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
-  }
+    measure: amazon_video_1_p_page_views {
+      type: sum
+      sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
+    }
 
-  dimension: amazon_video_rr {
-    type: number
-    sql: ${TABLE}.`Amazon Video RR` ;;
-  }
+    measure: amazon_video_impressions {
+      type: sum
+      sql: ${TABLE}.`Amazon Video Impressions` ;;
+    }
 
-  dimension: atc_rate {
-    type: number
-    sql: ${TABLE}.`ATC Rate` ;;
-  }
+    # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
+    # measures for this dimension, but you can also add measures of many different aggregates.
+    # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
-  dimension: business {
-    type: string
-    sql: ${TABLE}.Business ;;
-  }
 
-  dimension: cf_cvr {
-    type: number
-    sql: ${TABLE}.`CF CVR` ;;
-  }
+    dimension: business {
+      type: string
+      sql: ${TABLE}.Business ;;
+    }
 
-  dimension: channel {
-    type: string
-    sql: ${TABLE}.Channel ;;
-  }
+    dimension: camp_audience {
+      type: string
+      sql: ${TABLE}.`Camp Audience` ;;
+    }
 
-  dimension: clicks {
-    type: number
-    sql: ${TABLE}.Clicks ;;
-  }
+    dimension: campaign_funnel {
+      type: string
+      sql: ${TABLE}.`Campaign Funnel` ;;
+    }
 
-  dimension: creative_concept {
-    type: string
-    sql: ${TABLE}.`Creative Concept` ;;
-  }
+    dimension: channel {
+      type: string
+      sql: ${TABLE}.Channel ;;
+    }
 
-  dimension: creative_message {
-    type: string
-    sql: ${TABLE}.`Creative Message` ;;
-  }
+    measure: clicks {
+      type: sum
+      sql: ${TABLE}.Clicks ;;
+    }
 
-  dimension: ctr {
-    type: number
-    sql: ${TABLE}.CTR ;;
-  }
+    dimension: creative_concept {
+      type: string
+      sql: ${TABLE}.`Creative Concept` ;;
+    }
 
-  dimension: dimension {
-    type: string
-    sql: ${TABLE}.Dimension ;;
-  }
+    dimension: creative_message {
+      type: string
+      sql: ${TABLE}.`Creative Message` ;;
+    }
 
-  dimension: funnel {
-    type: string
-    sql: ${TABLE}.Funnel ;;
-  }
+    dimension: dimension {
+      type: string
+      sql: ${TABLE}.Dimension ;;
+    }
 
-  dimension: impressions {
-    type: number
-    sql: ${TABLE}.Impressions ;;
-  }
+    measure: filtered_clicks {
+      type: sum
+      sql: ${TABLE}.`Filtered Clicks` ;;
+    }
 
-  # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
-  # measures for this dimension, but you can also add measures of many different aggregates.
-  # Click on the type parameter to see all the options in the Quick Help panel on the right.
+    measure: filtered_impressions {
+      type: sum
+      sql: ${TABLE}.`Filtered Impressions` ;;
+    }
 
-  measure: total_impressions {
-    type: sum
-    sql: ${impressions} ;;  }
-  measure: average_impressions {
-    type: average
-    sql: ${impressions} ;;  }
+    measure: impressions {
+      type: sum
+      sql: ${TABLE}.Impressions ;;
+    }
 
-  dimension: lob {
-    type: string
-    sql: ${TABLE}.LOB ;;
-  }
+    dimension: lob {
+      type: string
+      sql: ${TABLE}.LOB ;;
+    }
 
-  dimension: market {
-    type: string
-    sql: ${TABLE}.Market ;;
-  }
+    dimension: market {
+      type: string
+      sql: ${TABLE}.Market ;;
+    }
 
-  dimension: partner {
-    type: string
-    sql: ${TABLE}.Partner ;;
-  }
+    measure: paid_social_impressions {
+      type: sum
+      sql: ${TABLE}.`Paid Social Impressions` ;;
+    }
 
-  dimension: spend {
-    type: number
-    sql: ${TABLE}.Spend ;;
-  }
+    dimension: partner {
+      type: string
+      sql: ${TABLE}.Partner ;;
+    }
 
-  dimension: total_cf_atcs {
-    type: number
-    sql: ${TABLE}.`Total CF ATCs` ;;
-  }
+    measure: spend {
+      type: number
+      sql: ${TABLE}.Spend ;;
+      value_format_name: usd
+    }
 
-  dimension: total_cf_sales {
-    type: number
-    sql: ${TABLE}.`Total CF Sales` ;;
-  }
+    measure: total_cf_atcs {
+      type: sum
+      sql: ${TABLE}.`Total CF ATCs` ;;
+    }
 
-  dimension: tsr {
-    type: number
-    sql: ${TABLE}.TSR ;;
-  }
+    measure: total_cf_sales {
+      type: sum
+      sql: ${TABLE}.`Total CF Sales` ;;
+      value_format_name:  usd
+    }
 
-  dimension: video_views {
-    type: number
-    sql: ${TABLE}.`Video Views` ;;
-  }
+    measure: total_sessions {
+      type: sum
+      sql: ${TABLE}.`Total Sessions` ;;
+    }
 
-  dimension: vvr {
-    type: number
-    sql: ${TABLE}.VVR ;;
-  }
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
+    measure: video_views {
+      type: sum
+      sql: ${TABLE}.`Video Views` ;;
+    }
+    # Dates and timestamps can be represented in Looker using a dimension group of type: time.
+    # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: week_of {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.`Week of Date` ;;
+    dimension_group: week_of {
+      type: time
+      timeframes: [raw, date, week, month, quarter, year]
+      convert_tz: no
+      datatype: date
+      sql: ${TABLE}.`Week of Date` ;;
+    }
+
+    measure: youtube_impressions {
+      type: sum
+      sql: ${TABLE}.`Youtube Impressions` ;;
+    }
+    measure: count {
+      type: count
+    }
   }
-  measure: count {
-    type: count
-  }
-}
