@@ -51,8 +51,6 @@ view: cross_channel {
     sql: ${TABLE}.Channel ;;
   }
 
-
-
   dimension: lob {
     type: string
     sql: ${TABLE}.LOB ;;
@@ -198,7 +196,7 @@ view: cross_channel {
   measure: CostPerClick {
     type: number
     value_format_name: usd
-    sql: ${spend}/ NULLIF(PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+')),0) ;;
+    sql: ${spend} ;;
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
@@ -301,6 +299,23 @@ view: cross_channel {
     type: number
     value_format_name: percent_2
     sql: ${app_30_dt}/ NULLIF(${clicks},0) ;;
+  }
+
+# Build Dynamic Elements
+  parameter: item_to_add_up {
+    type: unquoted
+    allowed_value: {
+      label: "Impressions"
+      value: "sale_price"
+    }
+    allowed_value: {
+      label: "CVR"
+      value: "cost"
+    }
+    allowed_value: {
+      label: "Clicks"
+      value: "profit"
+    }
   }
 
 
