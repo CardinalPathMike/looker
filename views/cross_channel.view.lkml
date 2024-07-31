@@ -197,6 +197,14 @@ view: cross_channel {
     sql: (${spend}/ NULLIF(${impressions},0)) * 1000 ;;
   }
 
+##  o CPM = Spend / Impressions * 1000
+  measure: CPC {
+    type: number
+    value_format_name: usd
+    sql: ${spend}/ NULLIF(${clicks},0) ;;
+  }
+
+
 ##  o YouTube VVR = Video Views / YouTube Impressions
   measure: YouTubeVVR {
     type: number
