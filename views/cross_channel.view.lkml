@@ -313,7 +313,7 @@ view: cross_channel {
 ##  Bike Sales
 ##  Tread Sales
 
-  parameter: KPI_Comparison {
+  parameter: KPI_A_Selector {
     type: unquoted
     allowed_value: {
       label: "Impressions"
@@ -333,7 +333,7 @@ view: cross_channel {
     }
   }
 
-  measure: KPI_Metric_1 {
+  measure: KPI_A {
     type: number
     sql:
     {% if date_granularity._parameter_value == 'Impressions' %}
