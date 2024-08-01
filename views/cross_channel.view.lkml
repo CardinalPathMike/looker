@@ -313,30 +313,65 @@ view: cross_channel {
 ##  Bike Sales
 ##  Tread Sales
 
-  parameter: KPI_Comparison_1{
+  parameter: KPI_Comparison {
     type: unquoted
     allowed_value: {
       label: "Impressions"
-      value: "PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Impressions `,'[0-9]+'))"
+      value: "` Impressions `"
     }
     allowed_value: {
       label: "Clicks"
-      value: "PARSE_NUMERIC(REGEXP_EXTRACT(${TABLE}.` Clicks `,'[0-9]+'))"
+      value: "` Clicks `"
     }
     allowed_value: {
       label: "Total CF Sales"
-      value: "${TABLE}.`Total CF Sales`"
+      value: "`Total CF Sales`"
     }
     allowed_value: {
       label: "Total Sessions"
-      value: "${TABLE}.`Total Sessions`"
+      value: "`Total Sessions`"
     }
+  }
+
+  measure: dynamic_sum {
+    type: sum
+    sql: ${TABLE}.{% parameter KPI_Comparison %} ;;
+    value_format_name: "usd"
   }
 
   measure: KPI_Metric_1 {
     type: number
     sql: {% parameter KPI_Comparison_1 %} ;;
   }
+
+
+  parameter: date_granularity {
+    type: unquoted
+    allowed_value: {
+      label: "Break down by Day"
+      value: "day"
+    }
+    allowed_value: {
+      label: "Break down by Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Break down by Week"
+      value: "week"
+    }
+    }
+
+  dimension: date_breakdown {
+    sql:
+    {% if date_granularity._parameter_value == 'day' %}
+      ${date_date}
+    {% elsif date_granularity._parameter_value == 'month' %}
+      ${date_month}
+    {% else %}
+      ${date_week}
+    {% endif %};;
+  }
+
 
 ## KPI Comparison 2
 ##  CTR
