@@ -50,6 +50,21 @@ view: creative_data {
     sql: ${TABLE}.`Creative Message` ;;
   }
 
+  dimension: creative_message_image {
+    type: string
+    sql: ${creative_message} ;;
+    html:
+              {% if creative_message._value == "game_changing" %}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" height="170" width="255">
+              {% elsif creative_message._value == "your_way" %}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/1200px-Flag_of_New_York.svg.png" height="170" width="255">
+              {% elsif creative_message._value == "crush_ride" %}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Flag_of_Colorado.svg/255px-Flag_of_Colorado.svg.png" height="170" width="255">
+              {% else %}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
+              {% endif %} ;;
+  }
+
   dimension: dimension {
     type: string
     sql: ${TABLE}.Dimension ;;
