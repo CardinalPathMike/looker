@@ -317,31 +317,35 @@ view: cross_channel {
     type: unquoted
     allowed_value: {
       label: "Impressions"
-      value: "` Impressions `"
+      value: "Impressions"
     }
     allowed_value: {
       label: "Clicks"
-      value: "` Clicks `"
+      value: "Clicks"
     }
     allowed_value: {
       label: "Total CF Sales"
-      value: "`Total CF Sales`"
+      value: "Total CF Sales"
     }
     allowed_value: {
       label: "Total Sessions"
-      value: "`Total Sessions`"
+      value: "Total Sessions"
     }
-  }
-
-  measure: dynamic_sum {
-    type: sum
-    sql: ${TABLE}.{% parameter KPI_Comparison %} ;;
-    value_format_name: "usd"
   }
 
   measure: KPI_Metric_1 {
     type: number
-    sql: {% parameter KPI_Comparison_1 %} ;;
+    sql:
+    {% if date_granularity._parameter_value == 'Impressions' %}
+    ${impressions}
+    {% elsif date_granularity._parameter_value == 'Clicks' %}
+    ${clicks}
+    {% elsif date_granularity._parameter_value == 'Total CF Sales' %}
+    ${total_cf_sales}
+    {% else %}
+    ${total_sessions}
+    {% endif %};;
+
   }
 
 
