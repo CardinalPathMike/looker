@@ -317,30 +317,30 @@ view: cross_channel {
     type: unquoted
     allowed_value: {
       label: "Impressions"
-      value: "Impressions"
+      value: "impressions"
     }
     allowed_value: {
       label: "Clicks"
-      value: "Clicks"
+      value: "clicks"
     }
     allowed_value: {
       label: "Total CF Sales"
-      value: "Total CF Sales"
+      value: "total_cf_sales"
     }
     allowed_value: {
       label: "Total Sessions"
-      value: "Total Sessions"
+      value: "total_sessions"
     }
   }
 
   measure: KPI_A {
     type: number
     sql:
-    {% if date_granularity._parameter_value == 'Impressions' %}
+    {% if KPI_A_Selector._parameter_value == 'impressions' %}
     ${impressions}
-    {% elsif date_granularity._parameter_value == 'Clicks' %}
+    {% elsif KPI_A_Selector._parameter_value == 'clicks' %}
     ${clicks}
-    {% elsif date_granularity._parameter_value == 'Total CF Sales' %}
+    {% elsif KPI_A_Selector._parameter_value == 'total_cf_sales' %}
     ${total_cf_sales}
     {% else %}
     ${total_sessions}
