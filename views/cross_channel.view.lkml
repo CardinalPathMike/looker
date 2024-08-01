@@ -28,6 +28,12 @@ view: cross_channel {
   extends: [_date_comparison]
 
   dimension: event_raw{
+    sql:  ${date_raw}date}::datetime} ;;
+    type: date_raw
+    hidden: yes
+  }
+
+  dimension: event_date{
     sql:  ${date_date}::datetime} ;;
     type: date_raw
     hidden: yes
