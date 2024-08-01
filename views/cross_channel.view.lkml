@@ -1,4 +1,6 @@
 # The name of this view in Looker is "New Cross Channel"
+include: "_date_comparison.view.lkml"
+
 view: cross_channel {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
@@ -14,14 +16,30 @@ view: cross_channel {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
+#---- This is an example view file
 
   dimension_group: date {
     type: time
-    timeframes: [raw, date, week, month, quarter, year]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.Date ;;
+    timeframes: [date, raw, month, week]
   }
+
+
+#---- Add in these parameters to your own view file replacing your_date_dimension
+  extends: [_date_comparison]
+
+  dimension: event_raw{
+    sql:  ${date_date}::datetime} ;;
+    type: date_raw
+    hidden: yes
+  }
+
+#  dimension_group: date {
+#    type: time
+#    timeframes: [raw, date, week, month, quarter, year]
+#    convert_tz: no
+#    datatype: date
+#    sql: ${TABLE}.Date ;;
+#  }
 
   dimension_group: week {
     type: time
