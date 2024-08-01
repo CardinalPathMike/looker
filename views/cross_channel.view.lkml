@@ -18,34 +18,34 @@ view: cross_channel {
 
 #---- This is an example view file
 
-  dimension_group: date {
-    type: time
-    timeframes: [date, raw, month, week]
-  }
+#  dimension_group: date {
+#    type: time
+#    timeframes: [date, raw, month, week]
+#  }
 
 
 #---- Add in these parameters to your own view file replacing your_date_dimension
-  extends: [_date_comparison]
+#  extends: [_date_comparison]
 
-  dimension: event_raw{
-    sql:  ${date_raw}date}::datetime} ;;
-    type: date_raw
-    hidden: yes
-  }
-
-  dimension: event_date{
-    sql:  ${date_date}::datetime} ;;
-    type: date_raw
-    hidden: yes
-  }
-
-#  dimension_group: date {
-#    type: time
-#    timeframes: [raw, date, week, month, quarter, year]
-#    convert_tz: no
-#    datatype: date
-#    sql: ${TABLE}.Date ;;
+#  dimension: event_raw {
+#    sql:  ${date_raw}date}::datetime} ;;
+#    type: date_raw
+#    hidden: yes
 #  }
+
+#  dimension: event_date {
+#    sql:  ${date_date}::datetime} ;;
+#    type: date_raw
+#    hidden: yes
+#  }
+
+  dimension_group: date {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.Date ;;
+  }
 
   dimension_group: week {
     type: time
