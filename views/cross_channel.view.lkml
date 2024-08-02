@@ -135,6 +135,7 @@ view: cross_channel {
 
   measure: total_cf_atcs {
     type: sum
+    value_format_name: usd_0
     sql: ${TABLE}.`Total CF ATCs` ;;
   }
 
