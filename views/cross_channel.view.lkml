@@ -77,7 +77,7 @@ view: cross_channel {
               {% elsif creative_message._value == "ben_aldis_v1" %}
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% elsif creative_message._value == "rad_me_gusta" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
+              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% else %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
               {% endif %} ;;
