@@ -69,9 +69,9 @@ view: cross_channel {
     sql: ${creative_message} ;;
     html:
               {% if creative_message._value == "just_in_time" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" height="170" width="255">
+              <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" width="255">
               {% elsif creative_message._value == "annaline_v5_spark" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png" height="170" width="255">
+              <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png">
               {% elsif creative_message._value == "alex_nguyen_v2" %}
               <img src="https://storage.googleapis.com/peloton_creatives/alex_nguyen_v2.png" height="170" width="255">
               {% elsif creative_message._value == "ben_aldis_v1" %}
