@@ -149,18 +149,17 @@ view: cross_channel {
     sql: ${TABLE}.Spend ;;
   }
 
-  measure: total_cf_atcs {
+  measure: cf_atcs {
     type: sum
-    value_format_name: usd_0
     sql: ${TABLE}.`Total CF ATCs` ;;
   }
 
-  measure: total_cf_sales {
+  measure: cf_sales {
     type: sum
     sql: ${TABLE}.`Total CF Sales` ;;
   }
 
-  measure: total_sessions {
+  measure: sessions {
     type: sum
     sql: ${TABLE}.`Total Sessions` ;;
   }
@@ -195,7 +194,7 @@ view: cross_channel {
 ##  o CTR = Filtered Clicks / Filtered Impressions
   measure: CTR {
     type: number
-    value_format_name: percent_2
+    value_format_name: percent_3
     sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
@@ -318,8 +317,8 @@ view: cross_channel {
       value: "clicks"
     }
     allowed_value: {
-      label: "Total CF Sales"
-      value: "total_cf_sales"
+      label: "CF Sales"
+      value: "cf_sales"
     }
     allowed_value: {
       label: "Total Sessions"
@@ -334,10 +333,10 @@ view: cross_channel {
     ${impressions}
     {% elsif KPI_A_Selector._parameter_value == 'clicks' %}
     ${clicks}
-    {% elsif KPI_A_Selector._parameter_value == 'total_cf_sales' %}
-    ${total_cf_sales}
+    {% elsif KPI_A_Selector._parameter_value == 'cf_sales' %}
+    ${cf_sales}
     {% else %}
-    ${total_sessions}
+    ${sessions}
     {% endif %};;
 
   }
