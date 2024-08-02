@@ -145,20 +145,21 @@ view: cross_channel {
 
   measure: spend {
     type: sum
+    value_format_name: usd_0
     sql: ${TABLE}.Spend ;;
   }
 
-  measure: total_cf_atcs {
+  measure: cf_atcs {
     type: sum
     sql: ${TABLE}.`Total CF ATCs` ;;
   }
 
-  measure: total_cf_sales {
+  measure: cf_sales {
     type: sum
     sql: ${TABLE}.`Total CF Sales` ;;
   }
 
-  measure: total_sessions {
+  measure: sessions {
     type: sum
     sql: ${TABLE}.`Total Sessions` ;;
   }
@@ -193,7 +194,7 @@ view: cross_channel {
 ##  o CTR = Filtered Clicks / Filtered Impressions
   measure: CTR {
     type: number
-    value_format_name: percent_2
+    value_format_name: percent_3
     sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
@@ -222,7 +223,7 @@ view: cross_channel {
   measure: CF_CAC {
     type: number
     value_format_name: usd
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) ;;
+    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
   }
 
 ##  o CF CVR = Total CF Sales / Clicks
@@ -252,6 +253,14 @@ view: cross_channel {
     value_format_name: usd
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
+
+# CPQV - Spend/Quality Visitors
+  measure: CPQV {
+    type: number
+    value_format_name: usd
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
+  }
+
 
 ##--------------Metrics specific to funnel level---------------------------
 ##----- Upper funnel (creation) engagement metric KPIs -------------------
@@ -308,8 +317,8 @@ view: cross_channel {
       value: "clicks"
     }
     allowed_value: {
-      label: "Total CF Sales"
-      value: "total_cf_sales"
+      label: "CF Sales"
+      value: "cf_sales"
     }
     allowed_value: {
       label: "Total Sessions"
@@ -324,10 +333,10 @@ view: cross_channel {
     ${impressions}
     {% elsif KPI_A_Selector._parameter_value == 'clicks' %}
     ${clicks}
-    {% elsif KPI_A_Selector._parameter_value == 'total_cf_sales' %}
-    ${total_cf_sales}
+    {% elsif KPI_A_Selector._parameter_value == 'cf_sales' %}
+    ${cf_sales}
     {% else %}
-    ${total_sessions}
+    ${sessions}
     {% endif %};;
 
   }
