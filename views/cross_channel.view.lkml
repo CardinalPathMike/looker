@@ -99,77 +99,77 @@ view: cross_channel {
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: clicks {
-    type: number
+    type: sum
     sql: ${TABLE}.Clicks ;;
   }
 
   measure: filtered_clicks {
-    type: number
+    type: sum
     sql: ${TABLE}.`Filtered Clicks` ;;
   }
 
   measure: filtered_impressions {
-    type: number
+    type: sum
     sql: ${TABLE}.`Filtered Impressions` ;;
   }
 
   measure: impressions {
-    type: number
+    type: sum
     sql: ${TABLE}.Impressions ;;
   }
 
   measure: paid_social_impressions {
-    type: number
+    type: sum
     sql: ${TABLE}.`Paid Social Impressions` ;;
   }
 
   measure: qualified_visitors {
-    type: number
+    type: sum
     sql: ${TABLE}.`Qualified Visitors` ;;
   }
 
   measure: spend {
-    type: number
+    type: sum
     sql: ${TABLE}.Spend ;;
   }
 
   measure: total_cf_atcs {
-    type: number
+    type: sum
     sql: ${TABLE}.`Total CF ATCs` ;;
   }
 
   measure: total_cf_sales {
-    type: number
+    type: sum
     sql: ${TABLE}.`Total CF Sales` ;;
   }
 
   measure: total_sessions {
-    type: number
+    type: sum
     sql: ${TABLE}.`Total Sessions` ;;
   }
 
   measure: video_views {
-    type: number
+    type: sum
     sql: ${TABLE}.`Video Views` ;;
   }
 
   measure: youtube_impressions {
-    type: number
+    type: sum
     sql: ${TABLE}.`YouTube Impressions` ;;
   }
 
   measure: 2_3_sec_video_views {
-    type: number
+    type: sum
     sql: ${TABLE}.`2_3 sec video views` ;;
   }
 
   measure: amazon_video_1_p_page_views {
-    type: number
+    type: sum
     sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
   }
 
   measure: amazon_video_impressions {
-    type: number
+    type: sum
     sql: ${TABLE}.`Amazon Video Impressions` ;;
   }
 
