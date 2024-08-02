@@ -68,17 +68,25 @@ view: cross_channel {
     type: string
     sql: ${creative_message} ;;
     html:
-              {% if creative_message._value == "ent_nba" %}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" height="170" width="255">
-              {% elsif creative_message._value == "gr_creator" %}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/1200px-Flag_of_New_York.svg.png" height="170" width="255">
-              {% elsif creative_message._value == "instructor" %}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Flag_of_Colorado.svg/255px-Flag_of_Colorado.svg.png" height="170" width="255">
+              {% if creative_message._value == "just_in_time" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" height="170" width="255">
+              {% elsif creative_message._value == "annaline_v5_spark" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png" height="170" width="255">
+              {% elsif creative_message._value == "alex_nguyen_v2" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/alex_nguyen_v2.png" height="170" width="255">
+              {% elsif creative_message._value == "ben_aldis_v1" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
+              {% elsif creative_message._value == "rad_me_gusta" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
               {% else %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
               {% endif %} ;;
   }
 
+  dimension: sku {
+    type: string
+    sql: ${TABLE}.`SKU` ;;
+  }
   dimension: creative_variation {
     type: string
     sql: ${TABLE}.`Creative Variation` ;;
