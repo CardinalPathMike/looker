@@ -71,11 +71,11 @@ view: cross_channel {
               {% if creative_message._value == "just_in_time" %}
               <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" width="255">
               {% elsif creative_message._value == "annaline_v5_spark" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png">
+              <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png" width="255">
               {% elsif creative_message._value == "alex_nguyen_v2" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/alex_nguyen_v2.png" height="170" width="255">
+              <img src="https://storage.googleapis.com/peloton_creatives/alex_nguyen_v2.png" width="255">
               {% elsif creative_message._value == "ben_aldis_v1" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
+              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% elsif creative_message._value == "rad_me_gusta" %}
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
               {% else %}
