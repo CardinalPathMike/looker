@@ -26,5 +26,3 @@ persist_with: peloton_default_datagroup
 # Each joined view also needs to define a primary key.
 
 explore: cross_channel {}
-
-explore: creative_data {}
