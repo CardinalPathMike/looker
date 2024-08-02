@@ -182,14 +182,14 @@ view: tk_test_view {
   measure: current_period_clicks {
     view_label: "_PoP"
     type: sum
-    sql: ${clicks};;
+    sql: ${TABLE}.Clicks;;
     filters: [period_filtered_measures: "this"]
   }
 
   measure: previous_period_clicks {
     view_label: "_PoP"
     type: sum
-    sql: ${clicks};;
+    sql: ${TABLE}.Clicks;;
     filters: [period_filtered_measures: "last"]
   }
 
