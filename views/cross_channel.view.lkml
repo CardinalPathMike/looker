@@ -68,16 +68,16 @@ view: cross_channel {
     type: string
     sql: ${creative_message} ;;
     html:
-              {% if creative_message._value == "just_in_time" %}
+              {% if creative_variation._value == "mjppmpn6m500" %}
               <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" width="255">
-              {% elsif creative_message._value == "annaline_v5_spark" %}
+              {% elsif creative_message._value == "ptsp328" %}
               <img src="https://storage.googleapis.com/peloton_creatives/annaline_v5_spark.png" width="255">
-              {% elsif creative_message._value == "alex_nguyen_v2" %}
+              {% elsif creative_message._value == "ptsp326" %}
               <img src="https://storage.googleapis.com/peloton_creatives/alex_nguyen_v2.png" width="255">
-              {% elsif creative_message._value == "ben_aldis_v1" %}
+              {% elsif creative_message._value == "ptsp335" %}
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
-              {% elsif creative_message._value == "rad_me_gusta" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" height="170" width="255">
+              {% elsif creative_message._value == "mjalse3t538" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% else %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
               {% endif %} ;;
