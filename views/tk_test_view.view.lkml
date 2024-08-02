@@ -65,9 +65,9 @@ view: tk_test_view {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            date_add(DAY, -${days_in_period}, DATE({% date_start current_date_range %}))
+            date_add(DATE({% date_start current_date_range %}), INTERVAL -${days_in_period} DAY)
             {% else %}
-            date_add({% parameter compare_to %}, -1, DATE({% date_start current_date_range %}))
+            date_add(DATE({% date_start current_date_range %}), INTERVAL -1 {% parameter compare_to %})
             {% endif %};;
   }
 
@@ -78,9 +78,9 @@ view: tk_test_view {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            date_add(DAY, -1, DATE({% date_start current_date_range %}))
+            date_add(DATE({% date_start current_date_range %}), INTERVAL -1 DAY)
             {% else %}
-            date_add({% parameter compare_to %}, -1, date_add(DAY, -1, DATE({% date_end current_date_range %})))
+            date_add(date_add(DATE({% date_end current_date_range %}), INTERVAL -1 DAY), INTERVAL -1 {% parameter compare_to %})
             {% endif %};;
   }
 
@@ -92,9 +92,9 @@ view: tk_test_view {
         {% if current_date_range._is_filtered %}
             CASE
             WHEN {% condition current_date_range %} ${date_raw} {% endcondition %}
-            THEN date_diff(DAY, DATE({% date_start current_date_range %}), ${date_date}) + 1
+            THEN date_diff(DATE({% date_start current_date_range %}), ${date_date}, DAY) + 1
             WHEN ${date_date} between ${period_2_start} and ${period_2_end}
-            THEN date_diff(DAY, ${period_2_start}, ${date_date}) + 1
+            THEN date_diff(${period_2_start}, ${date_date}, DAY) + 1
             END
         {% else %} NULL
         {% endif %}
@@ -125,7 +125,7 @@ view: tk_test_view {
     description: "Use this as your grouping dimension when comparing periods. Aligns the previous periods onto the current period"
     label: "Current Period"
     type: time
-    sql: date_add(DAY, ${day_in_period} - 1, DATE({% date_start current_date_range %})) ;;
+    sql: date_add(DATE({% date_start current_date_range %}), INTERVAL ${day_in_period} - 1 DAY) ;;
     view_label: "_PoP"
     timeframes: [
       date,
