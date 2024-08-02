@@ -255,6 +255,14 @@ view: cross_channel {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
 
+# CPQV - Spend/Quality Visitors
+  measure: CPQV {
+    type: number
+    value_format_name: usd
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
+  }
+
+
 ##--------------Metrics specific to funnel level---------------------------
 ##----- Upper funnel (creation) engagement metric KPIs -------------------
 
