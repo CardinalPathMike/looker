@@ -223,7 +223,7 @@ view: cross_channel {
   measure: CF_CAC {
     type: number
     value_format_name: usd
-    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend))/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) end  ;;
+    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend))/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
   }
 
 ##  o CF CVR = Total CF Sales / Clicks
