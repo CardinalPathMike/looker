@@ -193,7 +193,7 @@ view: tk_test_view {
     filters: [period_filtered_measures: "last"]
   }
 
-  measure: sales_pop_change {
+  measure: clicks_pop_change {
     view_label: "_PoP"
     label: "Total Clicks period-over-period % change"
     type: number
@@ -386,6 +386,14 @@ view: tk_test_view {
   measure: clicks {
     type: number
     sql: ${TABLE}.Clicks ;;
+  }
+
+  measure: total_clicks {
+    label: "Total Clicks"
+    view_label: "_PoP"
+    type: sum
+    sql: ${TABLE}.Clicks ;;
+    drill_fields: [date_date]
   }
 
 ##  o CPM = Spend / Impressions * 1000
