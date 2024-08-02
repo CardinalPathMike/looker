@@ -68,11 +68,11 @@ view: cross_channel {
     type: string
     sql: ${creative_message} ;;
     html:
-              {% if creative_message._value == "men_15s" %}
+              {% if creative_message._value == "ent_nba" %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" height="170" width="255">
-              {% elsif creative_message._value == "nba_2_6s" %}
+              {% elsif creative_message._value == "gr_creator" %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_New_York.svg/1200px-Flag_of_New_York.svg.png" height="170" width="255">
-              {% elsif creative_message._value == "latinx_15s" %}
+              {% elsif creative_message._value == "instructor" %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Flag_of_Colorado.svg/255px-Flag_of_Colorado.svg.png" height="170" width="255">
               {% else %}
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
