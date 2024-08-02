@@ -221,7 +221,7 @@ view: cross_channel {
 
 ##  o CF CAC = spend / Total CF Sales
   measure: CF_CAC {
-    type: number
+    type: sum
     value_format_name: usd
     sql: case when NULLIF(${TABLE}.`Total CF Sales`,0) = 0 then 0 else sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0)) end  ;;
   }
