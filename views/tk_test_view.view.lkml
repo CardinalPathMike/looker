@@ -55,7 +55,7 @@ view: tk_test_view {
     view_label: "_PoP"
     description: "Gives the number of days in the current period date range"
     type: number
-    sql: date_diff(DAY, DATE({% date_start current_date_range %}), DATE({% date_end current_date_range %})) ;;
+    sql: date_diff(DATE({% date_start current_date_range %}), DATE({% date_end current_date_range %}), DAY) ;;
   }
 
   dimension: period_2_start {
