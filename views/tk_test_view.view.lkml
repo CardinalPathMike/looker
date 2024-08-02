@@ -278,7 +278,7 @@ view: tk_test_view {
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: timestamp
-    sql: ${TABLE}.Date ;;
+    sql: cast(${TABLE}.Date to timestamp) ;;
   }
 
   dimension: dimension {
