@@ -55,7 +55,7 @@ view: tk_test_view {
     view_label: "_PoP"
     description: "Gives the number of days in the current period date range"
     type: number
-    sql: DATEDIFF(DAY, DATE({% date_start current_date_range %}), DATE({% date_end current_date_range %})) ;;
+    sql: date_diff(DAY, DATE({% date_start current_date_range %}), DATE({% date_end current_date_range %})) ;;
   }
 
   dimension: period_2_start {
@@ -65,9 +65,9 @@ view: tk_test_view {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            DATEADD(DAY, -${days_in_period}, DATE({% date_start current_date_range %}))
+            date_add(DAY, -${days_in_period}, DATE({% date_start current_date_range %}))
             {% else %}
-            DATEADD({% parameter compare_to %}, -1, DATE({% date_start current_date_range %}))
+            date_add({% parameter compare_to %}, -1, DATE({% date_start current_date_range %}))
             {% endif %};;
   }
 
@@ -78,9 +78,9 @@ view: tk_test_view {
     type: date
     sql:
             {% if compare_to._parameter_value == "Period" %}
-            DATEADD(DAY, -1, DATE({% date_start current_date_range %}))
+            date_add(DAY, -1, DATE({% date_start current_date_range %}))
             {% else %}
-            DATEADD({% parameter compare_to %}, -1, DATEADD(DAY, -1, DATE({% date_end current_date_range %})))
+            date_add({% parameter compare_to %}, -1, date_add(DAY, -1, DATE({% date_end current_date_range %})))
             {% endif %};;
   }
 
@@ -92,9 +92,9 @@ view: tk_test_view {
         {% if current_date_range._is_filtered %}
             CASE
             WHEN {% condition current_date_range %} ${date_raw} {% endcondition %}
-            THEN DATEDIFF(DAY, DATE({% date_start current_date_range %}), ${date_date}) + 1
+            THEN date_diff(DAY, DATE({% date_start current_date_range %}), ${date_date}) + 1
             WHEN ${date_date} between ${period_2_start} and ${period_2_end}
-            THEN DATEDIFF(DAY, ${period_2_start}, ${date_date}) + 1
+            THEN date_diff(DAY, ${period_2_start}, ${date_date}) + 1
             END
         {% else %} NULL
         {% endif %}
@@ -125,7 +125,7 @@ view: tk_test_view {
     description: "Use this as your grouping dimension when comparing periods. Aligns the previous periods onto the current period"
     label: "Current Period"
     type: time
-    sql: DATEADD(DAY, ${day_in_period} - 1, DATE({% date_start current_date_range %})) ;;
+    sql: date_add(DAY, ${day_in_period} - 1, DATE({% date_start current_date_range %})) ;;
     view_label: "_PoP"
     timeframes: [
       date,
