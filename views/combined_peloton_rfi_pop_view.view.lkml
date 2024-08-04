@@ -5,11 +5,17 @@ view: combined_peloton_rfi_pop_view {
 
   dimension_group: date {
     type: time
-    timeframes: [raw, date, week, month, quarter, year]
+    timeframes: [raw]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Date ;;
   }
+
+##  dimension_group: time_selection {
+##    type: string
+##    sql: cast(${TABLE}.Date as VARCHAR) ;;
+##  }
+
 
   dimension: timeframe {
     type: string
