@@ -5,7 +5,7 @@ view: combined_peloton_rfi_pop_view {
 
   dimension_group: date {
     type: time
-    timeframes: [raw]
+    timeframes: [raw, date]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Date ;;
