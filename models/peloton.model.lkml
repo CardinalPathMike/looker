@@ -27,3 +27,4 @@ persist_with: peloton_default_datagroup
 
 explore: cross_channel {}
 explore: tk_test_view {}
+explore: combined_peloton_rfi_pop_view {}
