@@ -79,7 +79,7 @@ view: cross_channel {
               {% elsif creative_variation._value == "mjalse3t538" %}
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% else %}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
+              <img src="https://press.onepeloton.com/assets/images/update2023/thumbs/LOGO_WHITE.jpg" height="170" width="170">
               {% endif %} ;;
   }
 
