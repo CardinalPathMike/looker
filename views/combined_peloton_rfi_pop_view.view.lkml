@@ -99,12 +99,12 @@ view: cross_channel_pop {
 
   ### Measures
   measure: spend {
-    type: number
+    type: sum
     sql: ${TABLE}.Spend ;;
   }
 
   measure: prior_spend {
-    type: number
+    type: sum
     sql: ${TABLE}.prior_Spend ;;
   }
 
