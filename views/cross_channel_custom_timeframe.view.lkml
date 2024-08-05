@@ -17,6 +17,16 @@ view: cross_channel_custom_timeframe {
     type: date_time
   }
 
+  dimension: date_row_a {
+    type: number
+    sql: ROW_NUMBER() OVER (ORDER BY ${date_raw}) ;;
+  }
+
+  dimension: date_row_b {
+    type: number
+    sql: ROW_NUMBER() OVER (ORDER BY ${date_raw});;
+  }
+
   ## flag for "A" measures to only include appropriate time range
   dimension: group_a_yesno {
     hidden: yes
@@ -141,6 +151,26 @@ view: cross_channel_custom_timeframe {
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.Spend ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
+  measure: clicks {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
+  }
+
+  measure: clicks_a {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure:clicks_b {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
     filters: [group_b_yesno: "yes"]
   }
 
@@ -455,13 +485,13 @@ view: cross_channel_custom_timeframe {
   measure: CPM_a {
     type: number
     value_format_name: usd
-    sql: case when ${sum_impressions_a} = 0 then 0 else ${sum_spend_a}/${sum_impressions_a} end;;
+    sql: case when ${sum_impressions_a} = 0 then 0 else (${sum_spend_a}/${sum_impressions_a}) * 1000 end;;
   }
 
   measure: CPM_b {
     type: number
     value_format_name: usd
-    sql: case when ${sum_impressions_b} = 0 then 0 else ${sum_spend_b}/ ${sum_impressions_b} end ;;
+    sql: case when ${sum_impressions_b} = 0 then 0 else (${sum_spend_b}/ ${sum_impressions_b}) * 1000 end ;;
   }
 
 
