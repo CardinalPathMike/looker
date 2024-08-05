@@ -80,11 +80,11 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/rad_me_gusta.png" width="255">
               {% elsif creative_message._value == "emotional" and creative_variation._value == "ptsp294" %}
               <img src="https://storage.googleapis.com/peloton_creatives/emotional.png" width="255">
-              {% elsif creative_message._value == "wherever_you_call_home" and creative_variation._value == "mjpaah6t502" %}
+              {% elsif creative_message._value == "wherever_you_call_home" and creative_variation._value contains "mjpaa" %}
               <img src="https://storage.googleapis.com/peloton_creatives/wherever_you_call_home.png" width="255">
-              {% elsif creative_message._value contains "carlhermommy" and creative_variation._value == "ptsp292" %}
+              {% elsif creative_message._value contains "carlher" and creative_variation._value == "ptsp292" %}
               <img src="https://storage.googleapis.com/peloton_creatives/carl_her_mommy_.png" width="255">
-              {% elsif creative_message._value == "camila_music" and creative_variation._value == "mjblar6m554" %}
+              {% elsif creative_message._value == "camila_music" and creative_variation._value contains "mjblar" %}
               <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
               {% else %}
               <img src="https://storage.googleapis.com/peloton_creatives/peloton_logo.png" height="170" width="170">
