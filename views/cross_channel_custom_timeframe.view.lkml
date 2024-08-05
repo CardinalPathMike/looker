@@ -18,12 +18,12 @@ view: cross_channel_custom_timeframe {
   }
 
   dimension: date_row_a {
-    type: number
+    type: string
     sql: ROW_NUMBER() OVER (ORDER BY ${date_raw}) ;;
   }
 
   dimension: date_row_b {
-    type: number
+    type: string
     sql: ROW_NUMBER() OVER (ORDER BY ${date_raw});;
   }
 
