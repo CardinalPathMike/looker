@@ -11,10 +11,10 @@ view: cross_channel_pop {
     sql: ${TABLE}.Date ;;
   }
 
-##  dimension_group: time_selection {
-##    type: string
-##    sql: cast(${TABLE}.Date as VARCHAR) ;;
-##  }
+  dimension: select {
+    type: string
+    sql: CAST(${TABLE}.Date as string)  ;;
+  }
 
 
   dimension: timeframe {
