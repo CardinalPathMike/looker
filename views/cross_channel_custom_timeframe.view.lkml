@@ -425,13 +425,13 @@ view: cross_channel_custom_timeframe {
    measure: CTR_a {
     type: number
     value_format_name: percent_3
-    sql: ${sum_filtered_clicks_a}/${sum_filtered_impressions_a};;
+    sql: case when ${sum_filtered_impressions_a} = 0 then 0 else ${sum_filtered_clicks_a}/${sum_filtered_impressions_a} end;;
   }
 
   measure: CTR_b {
     type: number
     value_format_name: percent_3
-    sql: ${sum_filtered_clicks_b}/ ${sum_filtered_impressions_b} ;;
+    sql: case when ${sum_filtered_impressions_b} = 0 then 0 else ${sum_filtered_clicks_b}/ ${sum_filtered_impressions_b} end ;;
   }
 
 ##  o CPM = Spend / Impressions * 1000
