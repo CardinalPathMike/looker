@@ -373,25 +373,6 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
-##  dimension: total_amount {
-##    type: number
-##    sql: ${TABLE}.total_amount;;
-##  }
-##  measure:  sum_creation_range {
-##    type: sum
-##    sql: CASE WHEN ${creation_date} between {% date_start creation_date_filter %}
-##          and {% date_end creation_date_filter %} THEN ${total_amount} END;;
-##  }
-##  measure:  sum_closure_range {
-##    type: sum
-##    sql: CASE WHEN ${closure_date} between {% date_start closure_date_filter %}
-##      and {% date_end closure_date_filter %} THEN ${total_amount} END;;
-##  }
-##  measure:  two_sum_division {
-##    type: number
-##    sql: ${sum_creation_range} / ${sum_closure_range};;
-##  }
-
   dimension: filtered_clicks_dim {
     type: number
     sql: ${TABLE}.`Filtered Clicks` ;;
@@ -425,13 +406,13 @@ view: cross_channel_custom_timeframe {
    measure: CTR_a {
     type: number
     value_format_name: percent_3
-    sql: ${sum_filtered_clicks_a}/${sum_filtered_impressions_a};;
+    sql: case when ${sum_filtered_impressions_a} = 0 then 0 else ${sum_filtered_clicks_a}/${sum_filtered_impressions_a} end;;
   }
 
   measure: CTR_b {
     type: number
     value_format_name: percent_3
-    sql: ${sum_filtered_clicks_b}/ ${sum_filtered_impressions_b} ;;
+    sql: case when ${sum_filtered_impressions_b} = 0 then 0 else ${sum_filtered_clicks_b}/ ${sum_filtered_impressions_b} end ;;
   }
 
 ##  o CPM = Spend / Impressions * 1000
@@ -441,21 +422,50 @@ view: cross_channel_custom_timeframe {
     sql: (sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Impressions ,0))) * 1000 ;;
   }
 
-  measure: CPM_a {
+  dimension: spend_dim {
+    type: number
+    sql: ${TABLE}.Spend ;;
+  }
+
+  dimension: impressions_dim {
+    type: number
+    sql:${TABLE}.Impressions ;;
+  }
+
+  measure: sum_spend_a {
     type: sum
-    value_format_name: percent_3
-    sql: (sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Impressions ,0))) * 1000 ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${spend_dim} END;;
+  }
+
+  measure: sum_spend_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${spend_dim} END;;
+  }
+
+  measure: sum_impressions_a {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${impressions_dim} END;;
+  }
+
+  measure: sum_impressions_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${impressions_dim} END;;
+  }
+
+  measure: CPM_a {
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_impressions_a} = 0 then 0 else ${sum_spend_a}/${sum_impressions_a} end;;
   }
 
   measure: CPM_b {
-    type: sum
-    value_format_name: percent_3
-    sql: (sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Impressions ,0))) * 1000 ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_impressions_b} = 0 then 0 else ${sum_spend_b}/ ${sum_impressions_b} end ;;
   }
 
-##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
+
+ ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: AmazonVRR {
     type: number
     value_format_name: percent_2
