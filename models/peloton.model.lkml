@@ -29,4 +29,4 @@ explore: cross_channel {}
 explore: cross_channel2 {from: cross_channel}
 explore: cross_channel3 {from: cross_channel}
 explore: tk_test_view {}
-explore: combined_peloton_rfi_pop_view {}
+explore: cross_channel_pop {}

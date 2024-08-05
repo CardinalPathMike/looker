@@ -1,4 +1,4 @@
-view: combined_peloton_rfi_pop_view {
+view: cross_channel_pop {
   sql_table_name: `peloton.combined_peloton_rfi_pop_view` ;;
 
 ## Dimensions
