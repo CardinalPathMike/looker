@@ -19,12 +19,12 @@ view: cross_channel_custom_timeframe {
 
   dimension: date_row_a {
     type: number
-    sql: case when {% condition timeframe_a %} {% endcondition %} then ROW_NUMBER() OVER (ORDER BY ${date_raw}) else NULL end ;;
+    sql: ROW_NUMBER() OVER (ORDER BY ${date_raw}) ;;
   }
 
   dimension: date_row_b {
     type: number
-    sql: case when {% condition timeframe_b %} {% endcondition %} then ROW_NUMBER() OVER (ORDER BY ${date_raw}) else NULL end;;
+    sql: ROW_NUMBER() OVER (ORDER BY ${date_raw});;
   }
 
   ## flag for "A" measures to only include appropriate time range
