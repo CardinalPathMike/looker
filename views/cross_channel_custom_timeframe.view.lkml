@@ -455,13 +455,13 @@ view: cross_channel_custom_timeframe {
   measure: CPM_a {
     type: number
     value_format_name: usd
-    sql: case when ${sum_impressions_a} = 0 then 0 else ${sum_spend_a}/${sum_impressions_a} end;;
+    sql: case when ${sum_impressions_a} = 0 then 0 else (${sum_spend_a}/${sum_impressions_a}) * 1000 end;;
   }
 
   measure: CPM_b {
     type: number
     value_format_name: usd
-    sql: case when ${sum_impressions_b} = 0 then 0 else ${sum_spend_b}/ ${sum_impressions_b} end ;;
+    sql: case when ${sum_impressions_b} = 0 then 0 else (${sum_spend_b}/ ${sum_impressions_b}) * 1000 end ;;
   }
 
 
