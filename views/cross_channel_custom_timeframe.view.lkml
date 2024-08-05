@@ -17,6 +17,16 @@ view: cross_channel_custom_timeframe {
     type: date_time
   }
 
+  dimension: date_row_a {
+    type: number
+    sql: {% condition timeframe_a %} ROW_NUMBER() OVER (ORDER BY ${date_raw}) {% endcondition %};;
+  }
+
+  dimension: date_row_b {
+    type: number
+    sql: {% condition timeframe_b %} ROW_NUMBER() OVER (ORDER BY ${date_raw}) {% endcondition %};;
+  }
+
   ## flag for "A" measures to only include appropriate time range
   dimension: group_a_yesno {
     hidden: yes
