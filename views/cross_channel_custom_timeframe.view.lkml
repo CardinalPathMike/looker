@@ -7,7 +7,7 @@ view: cross_channel_custom_timeframe {
     dimension_group: date {
       type: time
       timeframes: [raw, time, date]
-      sql: ${TABLE}.Date ;;
+      sql: TIMESTAMP(${TABLE}.Date) ;;
     }
 
   measure: spend {
@@ -31,6 +31,8 @@ view: cross_channel_custom_timeframe {
   ## filtered measure A
   measure: count_a {
     type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
     filters: [group_a_yesno: "yes"]
   }
 
@@ -48,6 +50,8 @@ view: cross_channel_custom_timeframe {
 
   measure: count_b {
     type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
     filters: [group_b_yesno: "yes"]
   }
 
