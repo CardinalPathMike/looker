@@ -360,8 +360,6 @@ view: cross_channel_custom_timeframe {
     filters: [group_b_yesno: "yes"]
   }
   ##---------------All efficiency metrics---------------------
-
-##  o CTR = Filtered Clicks / Filtered Impressions
 ##  o CTR = Filtered Clicks / Filtered Impressions
 
   measure: CTR {
@@ -412,11 +410,39 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
+  measure: AmazonVRR_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: AmazonVRR_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: SocialTSR {
     type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+  }
+
+  measure: SocialTSR_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: SocialTSR_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
   }
 
 ##  o CF CAC = spend / Total CF Sales
@@ -426,11 +452,39 @@ view: cross_channel_custom_timeframe {
     sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
   }
 
+  measure: CF_CAC_a {
+    type: sum
+    value_format_name: percent_3
+    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CF_CAC_b {
+    type: sum
+    value_format_name: percent_3
+    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
 ##  o CF CVR = Total CF Sales / Clicks
   measure: CF_CVR {
     type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+  }
+
+  measure: CF_CVR_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CF_CVR_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_b_yesno: "yes"]
   }
 
 ##  o CF CPATC = Spend / Total CF ATCs
@@ -440,11 +494,39 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
   }
 
+  measure: CF_CPATC_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CF_CPATC_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
 ##  o CF ATC Rate = Total CF ATCs / Clicks
   measure: CF_ATC_Rate {
     type: number
     value_format_name: percent_2
     sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+  }
+
+  measure: CF_ATC_Rate_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CF_ATC_Rate_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_b_yesno: "yes"]
   }
 
 ##  o CPV = Spend / Total Sessions
@@ -454,6 +536,20 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
 
+  measure: CPV_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CPV_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
 # CPQV - Spend/Quality Visitors
   measure: CPQV {
     type: number
@@ -461,15 +557,39 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
   }
 
+  measure: CPQV_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
 
-##--------------Metrics specific to funnel level---------------------------
-##----- Upper funnel (creation) engagement metric KPIs -------------------
+  measure: CPQV_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
 
 ##  o YouTube VVR = Video Views / YouTube Impressions
   measure: YouTube_VVR {
     type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
+  }
+
+  measure: YouTube_VVR_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: YouTube_VVR_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
   }
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
@@ -479,11 +599,39 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
+  measure: Amazon_VVR_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: Amazon_VVR_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
-  measure: Social_TSR{
+  measure: Thumb_Stop_Rate{
     type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+  }
+
+  measure: Thumb_Stop_Rate_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: Thumb_Stop_Rate_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
+    filters: [group_b_yesno: "yes"]
   }
 
 ## CPC = Spend / clicks
@@ -493,6 +641,19 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
   }
 
+  measure: CostPerClick_a {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure: CostPerClick_b {
+    type: sum
+    value_format_name: percent_3
+    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
+    filters: [group_b_yesno: "yes"]
+  }
 
 
 
