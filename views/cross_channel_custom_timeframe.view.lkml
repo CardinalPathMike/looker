@@ -54,6 +54,20 @@ view: cross_channel_custom_timeframe {
       {% condition timeframe_b %} ${date_raw} {% endcondition %} ;;
   }
 
+  dimension: is_in_time_a {
+    group_label: "Time Comparison Filters"
+    type: yesno
+    sql:
+      {% condition timeframe_a %} ${date_raw} {% endcondition %}  ;;
+  }
+
+  dimension: is_in_time_b {
+    group_label: "Time Comparison Filters"
+    type: yesno
+    sql:
+      {% condition timeframe_b %} ${date_raw} {% endcondition %}  ;;
+  }
+
 # Business Dimensions
 
   dimension: business {
