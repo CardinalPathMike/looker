@@ -18,12 +18,12 @@ view: cross_channel_custom_timeframe {
   }
 
   dimension: date_row_a {
-    type: number
+    type: string
     sql: ROW_NUMBER() OVER (ORDER BY ${date_raw}) ;;
   }
 
   dimension: date_row_b {
-    type: number
+    type: string
     sql: ROW_NUMBER() OVER (ORDER BY ${date_raw});;
   }
 
@@ -53,6 +53,32 @@ view: cross_channel_custom_timeframe {
       {% condition timeframe_a %} ${date_raw} {% endcondition %} OR
       {% condition timeframe_b %} ${date_raw} {% endcondition %} ;;
   }
+
+  dimension: is_in_time_a {
+    group_label: "Time Comparison Filters"
+    type: date
+    sql:
+      {% condition timeframe_a %} ${date_raw} {% endcondition %}  ;;
+  }
+
+  dimension: is_in_time_b {
+    group_label: "Time Comparison Filters"
+    type: date
+    sql:
+      {% condition timeframe_b %} ${date_raw} {% endcondition %}  ;;
+  }
+
+  dimension: first_date_in_period_a {
+    view_label: "Period over Period"
+    type: date
+    sql: min(${timeframe_a});;
+  }
+  #
+  #dimension: first_date_in_period_b {
+  #  view_label: "Period over Period"
+  #  type: date
+  #  sql: DATE_TRUNC(CURRENT_DATE(), {% parameter ${timeframe_b} %});;
+  #}
 
 # Business Dimensions
 
