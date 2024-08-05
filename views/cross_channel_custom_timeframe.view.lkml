@@ -144,6 +144,26 @@ view: cross_channel_custom_timeframe {
     filters: [group_b_yesno: "yes"]
   }
 
+  measure: clicks {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
+  }
+
+  measure: clicks_a {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
+    filters: [group_a_yesno: "yes"]
+  }
+
+  measure:clicks_b {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Clicks ;;
+    filters: [group_b_yesno: "yes"]
+  }
+
   measure: filtered_clicks {
     type: sum
     sql: ${TABLE}.`Filtered Clicks` ;;
