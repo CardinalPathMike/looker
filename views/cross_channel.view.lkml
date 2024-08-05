@@ -7,6 +7,7 @@ view: cross_channel {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
+
   dimension_group: week {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
@@ -68,6 +69,7 @@ view: cross_channel {
     type: string
     sql: ${creative_message} ;;
     html:
+              <!-- CREATION -->
               {% if creative_message._value == "just_in_time" and creative_variation._value == "mjpmpn6m500" %}
               <img src="https://storage.googleapis.com/peloton_creatives/just_in_time.png" width="255">
               {% elsif creative_message._value contains "annaline_v5" and creative_variation._value == "ptsp328" %}
@@ -78,6 +80,12 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% elsif creative_message._value == "rad_me_gusta" and creative_variation._value == "mjalse3t538" %}
               <img src="https://storage.googleapis.com/peloton_creatives/rad_me_gusta.png" width="255">
+              {% elsif creative_message._value == "carlhermommy_v4" and creative_variation._value == "ptsp347" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/carlhermomm_v4.png" width="255">
+              {% elsif creative_message._value == "jay_torres_v2_30dt" and creative_variation._value == "ptsp325" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/jay_torres_v2_30dt.png" width="255">
+
+              <!-- CAPTURE -->
               {% elsif creative_message._value == "emotional" and creative_variation._value == "ptsp294" %}
               <img src="https://storage.googleapis.com/peloton_creatives/emotional.png" width="255">
               {% elsif creative_message._value == "wherever_you_call_home" and creative_variation._value == "mjpaah6t502" %}
@@ -90,6 +98,24 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
               {% elsif creative_message._value == "camila_music" and creative_variation._value == "mjblar6m554" %}
               <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
+              {% elsif creative_message._value == "camila_music" and creative_variation._value == "mjblar6m554" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
+              {% elsif creative_message._value == "functional" and creative_variation._value == "ptsp293" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/functional.png" width="255">
+
+              <!-- MID FUNNEL -->
+              {% elsif creative_message._value == "camila_bangers" and creative_variation._value == "mjtlie5t114" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/camila_bangers.png" width="255">
+              {% elsif creative_message._value == "jess_decision_fatigue" and creative_variation._value == "mjtcwy1m531" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/jess_decision_fatigue.png" width="255">
+              {% elsif creative_message._value == "jess_power_walk" and creative_variation._value == "mjtcww3m120" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/jess_power_walk.png" width="255">
+              {% elsif creative_message._value == "30dht_sp" and creative_variation._value == "ptsp354" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/30dht_sp.png" width="255">
+              {% elsif creative_message._value == "armani_dex" and creative_variation._value == "mjamco3t514" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/armani_dex.png" width="255">
+
+              <!-- ELSE -->
               {% else %}
               <img src="https://storage.googleapis.com/peloton_creatives/peloton_logo.png" height="170" width="170">
               {% endif %} ;;
