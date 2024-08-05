@@ -70,7 +70,7 @@ view: cross_channel_custom_timeframe {
 
   dimension: first_date_in_period_a {
      type: date
-    sql: min(${date_raw});;
+    sql: DATE_DIFF(${date_raw}, CURRENT_DATE());;
   }
   #
   #dimension: first_date_in_period_b {
