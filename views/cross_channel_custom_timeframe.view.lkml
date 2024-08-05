@@ -68,6 +68,18 @@ view: cross_channel_custom_timeframe {
       {% condition timeframe_b %} ${date_raw} {% endcondition %}  ;;
   }
 
+  dimension: first_date_in_period_a {
+    view_label: "Period over Period"
+    type: date
+    sql: min(${timeframe_a});;
+  }
+  #
+  #dimension: first_date_in_period_b {
+  #  view_label: "Period over Period"
+  #  type: date
+  #  sql: DATE_TRUNC(CURRENT_DATE(), {% parameter ${timeframe_b} %});;
+  #}
+
 # Business Dimensions
 
   dimension: business {
