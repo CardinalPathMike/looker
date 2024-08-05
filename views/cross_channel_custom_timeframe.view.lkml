@@ -144,6 +144,11 @@ view: cross_channel_custom_timeframe {
     filters: [group_b_yesno: "yes"]
   }
 
+  measure: filtered_clicks {
+    type: sum
+    sql: ${TABLE}.`Filtered Clicks` ;;
+  }
+
   measure: filtered_clicks_a {
     type: sum
     sql: ${TABLE}.`Filtered Clicks` ;;
@@ -368,18 +373,65 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
   }
 
-  measure: CTR_a {
+##  dimension: total_amount {
+##    type: number
+##    sql: ${TABLE}.total_amount;;
+##  }
+##  measure:  sum_creation_range {
+##    type: sum
+##    sql: CASE WHEN ${creation_date} between {% date_start creation_date_filter %}
+##          and {% date_end creation_date_filter %} THEN ${total_amount} END;;
+##  }
+##  measure:  sum_closure_range {
+##    type: sum
+##    sql: CASE WHEN ${closure_date} between {% date_start closure_date_filter %}
+##      and {% date_end closure_date_filter %} THEN ${total_amount} END;;
+##  }
+##  measure:  two_sum_division {
+##    type: number
+##    sql: ${sum_creation_range} / ${sum_closure_range};;
+##  }
+
+  dimension: filtered_clicks_dim {
+    type: number
+    sql: ${TABLE}.`Filtered Clicks` ;;
+  }
+
+  dimension: filtered_impressions_dim {
+    type: number
+    sql:${TABLE}.`Filtered Impressions` ;;
+  }
+
+  measure: sum_filtered_clicks_a {
     type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${filtered_clicks_dim} END;;
+  }
+
+  measure: sum_filtered_clicks_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${filtered_clicks_dim} END;;
+  }
+
+  measure: sum_filtered_impressions_a {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${filtered_impressions_dim} END;;
+  }
+
+  measure: sum_filtered_impressions_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${filtered_impressions_dim} END;;
+  }
+
+   measure: CTR_a {
+    type: number
     value_format_name: percent_3
-    sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: ${sum_filtered_clicks_a}/${sum_filtered_impressions_a};;
   }
 
   measure: CTR_b {
-    type: sum
+    type: number
     value_format_name: percent_3
-    sql: sum(${TABLE}.`Filtered Clicks`)/ sum(NULLIF(${TABLE}.`Filtered Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    sql: ${sum_filtered_clicks_b}/ ${sum_filtered_impressions_b} ;;
   }
 
 ##  o CPM = Spend / Impressions * 1000
