@@ -78,6 +78,12 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/ben_aldis_v1.png" width="255">
               {% elsif creative_message._value == "rad_me_gusta" and creative_variation._value == "mjalse3t538" %}
               <img src="https://storage.googleapis.com/peloton_creatives/rad_me_gusta.png" width="255">
+              {% elsif creative_message._value == "wherever_you_call_home" and creative_variation._value == "mjpaah6t502" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/wherever_you_call_home.png" width="255">
+              {% elsif creative_message._value contains "carlhermommy" and creative_variation._value == "ptsp292" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/carl_her_mommy_.png" width="255">
+              {% elsif creative_message._value contains "camila_music" and creative_variation._value == "mjblar6t554" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
               {% else %}
               <img src="https://storage.googleapis.com/peloton_creatives/peloton_logo.png" height="170" width="170">
               {% endif %} ;;
