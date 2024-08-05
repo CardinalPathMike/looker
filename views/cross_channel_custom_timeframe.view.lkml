@@ -69,9 +69,8 @@ view: cross_channel_custom_timeframe {
   }
 
   dimension: first_date_in_period_a {
-    view_label: "Period over Period"
-    type: date
-    sql: min(${timeframe_a});;
+     type: date
+    sql: min(${date_raw});;
   }
   #
   #dimension: first_date_in_period_b {
