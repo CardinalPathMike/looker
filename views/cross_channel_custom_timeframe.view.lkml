@@ -974,9 +974,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis">
           <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <p>
-              <img src="https://images.squarespace-cdn.com/content/v1/572df8d3e321409a4b857cfa/1722863902087-PDAADXKTTTNL54Y25WWG/1-Top-Logos-Headline-Banner-3.png?format=1500w" width="100%" >
-            </p>
+            <p><b>MEDIA THAT MOVES WITH YOU</b></p><p style="text-align:right">dentsu | PELOTON</p>
       </div>
       </div>;;
   }
