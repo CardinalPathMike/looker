@@ -70,12 +70,12 @@ view: cross_channel_custom_timeframe {
 
   dimension: days_apart_in_period_a {
      type: number
-    sql: DATE_DIFF({% date_end timeframe_a %}, ${date_raw}, DAYS) ;;
+    sql: DATE_DIFF({% date_end timeframe_a %}, ${date_raw}, DAY) ;;
   }
 
   dimension: days_apart_in_period_b {
     type: number
-    sql: DATE_DIFF({% date_end timeframe_b %}, ${date_raw}, DAYS) ;;
+    sql: DATE_DIFF({% date_end timeframe_b %}, ${date_raw}, DAY) ;;
   }
   dimension: first_date_period_a {
     type: date
