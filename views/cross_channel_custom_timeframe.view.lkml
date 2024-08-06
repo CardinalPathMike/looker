@@ -77,6 +77,11 @@ view: cross_channel_custom_timeframe {
     type: number
     sql: date_DIFF({% date_end timeframe_b %} , ${date_raw}, DAY) ;;
   }
+
+  dimension: date_align {
+    type: number
+    sql: date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY) + 1 ;;
+  }
   #
   #dimension: first_date_in_period_b {
   #  view_label: "Period over Period"
