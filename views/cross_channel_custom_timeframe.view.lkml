@@ -961,6 +961,12 @@ view: cross_channel_custom_timeframe {
     sql: (${CF_ATC_Rate_a} - ${CF_ATC_Rate_b})/${CF_ATC_Rate_b} ;;
   }
 
+  measure: CF_ATCs_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${cf_atcs_a}_a} - ${cf_atcs_b})/${cf_atcs_b} ;;
+  }
+
 ### Build Out the Report
 
   measure: kpi_banner {
@@ -1050,7 +1056,7 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">Brand Product Queries</div><br>
+                  <div style="font-size: .75em;">Brand Product Queries</div><br>
                   <div style="font-size: .75em;">Current</div>
                   <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
                   <div style="font-size: .75em;">Prior</div>
@@ -1092,7 +1098,7 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CPM_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
-                    {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
+                    {% elsif cross_channel_custom_timeframe.CPM_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
                     {% else %}
                         <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
@@ -1191,7 +1197,7 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CPATC_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
-                    {% elsif cross_channel_custom_timeframe.CTR_variance._value == 0 %}
+                    {% elsif cross_channel_custom_timeframe.CF_CPATC_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
                     {% else %}
                         <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
@@ -1318,15 +1324,48 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: .75em;">Current</div>
                   <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_a._rendered_value}}</div><br>
                   <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_ATC_Rate._rendered_value}}</div><br>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_b._rendered_value}}</div><br>
                   <div style="font-size: .75em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_ATC_Rate_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
-                    {% elsif cross_channel_custom_timeframe.CF_CVR_variance._value == 0 %}
+                    {% elsif cross_channel_custom_timeframe.CF_ATC_Rate_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
                     {% else %}
                         <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
+                    {% endif %}
+                  </div>
+                  </b>
+                </center>
+              </font>
+            </p>
+      </div>
+      </div>
+   ;;
+  }
+
+  measure: CF_ATC_variance_viz {
+    type: count
+    group_label: "Report Elements"
+    html: <div class="vis">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <p>
+              <font color="white">
+                <center>
+                  <b>
+                  <div style="font-size: 1.5em;">CF ATC</div><br>
+                  <div style="font-size: .75em;">Current</div>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_atcs_a._rendered_value}}</div><br>
+                  <div style="font-size: .75em;">Prior</div>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_atcs_b._rendered_value}}</div><br>
+                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1.5em;">
+                    {% if cross_channel_custom_timeframe.CF_ATCs_variance._value > 0 %}
+                       <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
+                    {% elsif cross_channel_custom_timeframe.CF_ATCs_variance._value == 0 %}
+                      <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
+                    {% else %}
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
                     {% endif %}
                   </div>
                   </b>
