@@ -922,13 +922,13 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div font-size: 3em;>Spend</div><br><br><br>
-                  <div font-size: 1em;>Current Timeframe</div><br>
-                  <font size="12">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
-                  <font size="10"> Prior Timeframe - Spend:</font><br>
-                  <font size="12">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</font><br>
-                  <font size="10">Spend Variance</font><br>
-                  <font size="12">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</font>
+                  <div font-size: 3em;>Spend</div><br><br>
+                  <div font-size: .5em;>Current Timeframe</div><br>
+                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br><br>
+                  <div font-size: .5em;>Current Timeframe</div><br>
+                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br><br>
+                  <div font-size: .5em;>Variance</div><br>
+                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_variance._rendered_value}}</div><br><br>
                   </b>
                 </center>
               </font>
