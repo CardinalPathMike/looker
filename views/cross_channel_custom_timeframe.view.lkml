@@ -917,12 +917,13 @@ view: cross_channel_custom_timeframe {
 
   type: count
   html: <div class="vis">
-          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #5A2FC2, #F84066); color:#ffffff">
-            <center>
-            <p><font color="white"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
-            <p><font color="white"><center><b>Prior Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
-            <p>{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
-            </center>
+          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #ffffff, #91aa2d); color:#ffffff">
+            <p><font color="white"><center><b>Current Timeframe - Spend:</b></center></font></p>
+            <p><font color="white"><center><b>{{cross_channel_custom_timeframe.spend_a._rendered_value}}</b></center></font></p>
+            <p><font color="white"><center><b>Prior Timeframe - Spend:</b></center></font></p>
+            <p><font color="white"><center><b>{{cross_channel_custom_timeframe.spend_b._rendered_value}}</b></center></font></p>
+            <p><font color="white"><center><b>Spend Variance</b></center></font></p>
+            <p><font color="white"><center><b>{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</b></center></font></p>
       </div>
       </div>
    ;;
