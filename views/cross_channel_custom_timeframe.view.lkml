@@ -537,19 +537,48 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
-  measure: AmazonVRR_a {
+  dimension: amazon_video_1p_page_views_dim {
+    type: number
+    sql: ${TABLE}.`Amazon Video 1P Page Views` ;;
+    }
+
+  dimension: amazon_video_impressions_dim {
+    type: number
+    sql:${TABLE}.`Amazon Video Impressions` ;;
+  }
+
+  measure: sum_amazon_video_1p_page_views_a {
     type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${amazon_video_1p_page_views_dim} END;;
+  }
+
+  measure: sum_amazon_video_1p_page_views_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${amazon_video_1p_page_views_dim} END;;
+  }
+
+  measure: sum_amazon_video_impressions_a {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${amazon_video_impressions_dim} END;;
+  }
+
+  measure: sum_amazon_video_impressions_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${amazon_video_impressions_dim} END;;
+  }
+
+  measure: AmazonVRR_a {
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_amazon_video_impressions_a} = 0 then 0 else (${sum_amazon_video_1p_page_views_a}/${sum_amazon_video_impressions_a}) end;;
   }
 
   measure: AmazonVRR_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
-  }
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_amazon_video_impressions_b} = 0 then 0 else (${sum_amazon_video_1p_page_views_b}/${sum_amazon_video_impressions_b}) end;;
+    }
+
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
   measure: SocialTSR {
