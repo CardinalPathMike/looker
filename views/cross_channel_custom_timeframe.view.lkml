@@ -629,8 +629,6 @@ view: cross_channel_custom_timeframe {
     sql: case when ${sum_paid_social_impressions_dim_b} = 0 then 0 else (${sum_2_3_sec_video_views_b}/${sum_paid_social_impressions_dim_b}) end;;
     }
 
-
-
 ##  o CF CAC = spend / Total CF Sales
   measure: CF_CAC {
     type: number
