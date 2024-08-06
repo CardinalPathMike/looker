@@ -92,7 +92,7 @@ view: cross_channel_custom_timeframe {
       sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY))
   }
 
-#### Business Dimensions
+
 
   dimension: business {
     type: string
