@@ -900,6 +900,7 @@ view: cross_channel_custom_timeframe {
   }
 
 ## Variance Measures
+
   measure: spend_variance {
     type: number
     value_format_name: percent_2
@@ -910,6 +911,54 @@ view: cross_channel_custom_timeframe {
     type: number
     value_format_name: percent_2
     sql: (${impressions_a} - ${impressions_b})/${impressions_b} ;;
+  }
+
+  measure: CPM_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CPM_a} - ${CPM_b})/${CPM_b} ;;
+  }
+
+  measure: clicks_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${clicks_a} - ${clicks_b})/${clicks_b} ;;
+  }
+
+  measure: CTR_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CTR_a} - ${CTR_b})/${CTR_b} ;;
+  }
+
+  measure: CF_CPATC_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CF_CPATC_a} - ${CF_CPATC_b})/${CF_CPATC_b} ;;
+  }
+
+  measure: cf_sales_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${cf_sales_a} - ${cf_sales_b})/${cf_sales_b} ;;
+  }
+
+  measure: CF_CAC_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CF_CAC_a} - ${CF_CAC_b})/${CF_CAC_b} ;;
+  }
+
+  measure: CF_CVR_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CF_CVR_a} - ${CF_CVR_b})/${CF_CVR_b} ;;
+  }
+
+  measure: CF_ATC_Rate_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${CF_ATC_Rate_a} - ${CF_ATC_Rate_b})/${CF_ATC_Rate_b} ;;
   }
 
 ### Build Out the Report
@@ -969,6 +1018,39 @@ view: cross_channel_custom_timeframe {
                 <center>
                   <b>
                   <div style="font-size: 1.5em;">Impressions</div><br>
+                  <div style="font-size: .75em;">Current</div>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
+                  <div style="font-size: .75em;">Prior</div>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
+                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1.5em;">
+                    {% if cross_channel_custom_timeframe.impressions_variance._value > 0 %}
+                       <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
+                    {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
+                      <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
+                    {% else %}
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
+                    {% endif %}
+                  </div>
+                  </b>
+                </center>
+              </font>
+            </p>
+      </div>
+      </div>
+   ;;
+  }
+
+  measure: impressions_BQP_variance_viz {
+    type: count
+    group_label: "Report Elements"
+    html: <div class="vis">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <p>
+              <font color="white">
+                <center>
+                  <b>
+                  <div style="font-size: 1.5em;">Brand Product Queries</div><br>
                   <div style="font-size: .75em;">Current</div>
                   <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
                   <div style="font-size: .75em;">Prior</div>
