@@ -80,7 +80,7 @@ view: cross_channel_custom_timeframe {
 
   dimension: date_align {
     type: number
-    sql: date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY) + 1 ;;
+    sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY)) ;;
   }
   #
   #dimension: first_date_in_period_b {
