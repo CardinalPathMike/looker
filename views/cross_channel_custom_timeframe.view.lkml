@@ -904,11 +904,9 @@ view: cross_channel_custom_timeframe {
   type: count
   html: <div class="vis">
       <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #5A2FC2, #F84066); color:#ffffff">
-      <font color="#5A2FC2"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}} / 90 </font>
-      <p><em>{{cross_channel_custom_timeframe.spend_b._rendered_value}}% of Goal</em></p>
+      <font color="white"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
+      <font color="white"><center><b>Prior Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
       <p style="color:#ffffff;">{{ rendered_value }} Total Events </p>
-      <p style="float:left; font-family: Trebuchet MS;">
-      <i class="fa fa-facebook">&nbsp;</i> {{ cross_channel_custom_timeframe.spend_b._rendered_value }} Events&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </p></center>
       </div>
       </div>
