@@ -744,13 +744,13 @@ view: cross_channel_custom_timeframe {
 
   measure: CF_ATC_Rate_a {
     type: number
-    value_format_name: usd
+    value_format_name: percent_2
     sql: case when ${sum_clicks_a} = 0 then 0 else ${sum_total_cf_atcs_a}/${sum_clicks_a} end;;
   }
 
   measure: CF_ATC_Rate_b {
     type: number
-    value_format_name: usd
+    value_format_name: percent_2
     sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_total_cf_atcs_b}/ ${sum_clicks_b} end ;;
   }
 
