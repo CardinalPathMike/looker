@@ -107,6 +107,10 @@ view: cross_channel_custom_timeframe {
     sql: ${TABLE}.Channel ;;
   }
 
+  dimension: business {
+    type: string
+    sql: ${TABLE}.Business ;;
+  }
 
   dimension: ad_type {
     type: string
