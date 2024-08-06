@@ -88,17 +88,11 @@ view: cross_channel_custom_timeframe {
   }
 
   dimension: date_align {
-    type: number
-    sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY)) ;;
+      type: number
+      sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY))
   }
-  #
-  #dimension: first_date_in_period_b {
-  #  view_label: "Period over Period"
-  #  type: date
-  #  sql: DATE_TRUNC(CURRENT_DATE(), {% parameter ${timeframe_b} %});;
-  #}
 
-# Business Dimensions
+#### Business Dimensions
 
   dimension: business {
     type: string
