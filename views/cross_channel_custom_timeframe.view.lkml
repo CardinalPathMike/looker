@@ -964,7 +964,7 @@ view: cross_channel_custom_timeframe {
   measure: CF_ATCs_variance {
     type: number
     value_format_name: percent_2
-    sql: (${cf_atcs_a}_a} - ${cf_atcs_b})/${cf_atcs_b} ;;
+    sql: (${cf_atcs_a} - ${cf_atcs_b})/${cf_atcs_b} ;;
   }
 
 ### Build Out the Report
