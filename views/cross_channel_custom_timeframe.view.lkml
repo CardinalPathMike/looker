@@ -921,7 +921,7 @@ view: cross_channel_custom_timeframe {
             <center>
             <p><font color="white"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
             <p><font color="white"><center><b>Prior Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
-            <p style="color:#ffffff;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }} Total Events </p>
+            <p>{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
             </center>
       </div>
       </div>
