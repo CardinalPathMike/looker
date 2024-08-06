@@ -904,11 +904,11 @@ view: cross_channel_custom_timeframe {
   value_format_name: percent_2
   sql: (${spend_a} - ${spend_b})/${spend_b} ;;
   html:   {% if value > 0 %}
-            <p style="font-color:green;">{{ value }}</p>
+            <p style="color:green;">{{ value }}</p>
           {% elsif value == 0 %}
-            <p style="font-color:yellow;">{{ value }}</p>
+            <p style="color:yellow;">{{ value }}</p>
           {% else %}
-            <p style="font-color:red;" >{{ value }}</p>
+            <p style="color:red;" >{{ value }}</p>
         {% endif %}
   ;;
  }
