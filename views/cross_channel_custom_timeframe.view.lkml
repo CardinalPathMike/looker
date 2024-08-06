@@ -68,14 +68,23 @@ view: cross_channel_custom_timeframe {
       {% condition timeframe_b %} ${date_raw} {% endcondition %}  ;;
   }
 
-  dimension: first_date_in_period_a {
-     type: date
-    sql: {% date_end timeframe_a %} ;;
+  dimension: days_apart_in_period_a {
+     type: number
+    sql: DATE_DIFF({% date_end timeframe_a %}, ${date_raw}, DAYS) ;;
   }
 
-  dimension: first_date_in_period_b {
+  dimension: days_apart_in_period_b {
+    type: number
+    sql: DATE_DIFF({% date_end timeframe_b %}, ${date_raw}, DAYS) ;;
+  }
+  dimension: first_date_period_a {
     type: date
-    sql: {% date_end timeframe_b %} ;;
+    sql: {% date_start timeframe_a %} ;;
+  }
+
+  dimension: first_date_period_b {
+    type: date
+    sql: {% date_start timeframe_b %} ;;
   }
 
   dimension: date_align {
