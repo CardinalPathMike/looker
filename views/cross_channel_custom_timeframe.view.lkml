@@ -922,7 +922,7 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <font size="10"> Current Timeframe - Spend:</font><br>
+                  <div font-size: 2em;> Current Timeframe - Spend:</div><br>
                   <font size="12">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
                   <font size="10"> Prior Timeframe - Spend:</font><br>
                   <font size="12">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</font><br>
