@@ -917,7 +917,7 @@ view: cross_channel_custom_timeframe {
 
   type: count
   html: <div class="vis">
-          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
             <p>
               <font color="white">
                 <center>
