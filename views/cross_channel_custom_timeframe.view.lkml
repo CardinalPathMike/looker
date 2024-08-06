@@ -899,11 +899,12 @@ view: cross_channel_custom_timeframe {
     sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_spend_b}/ ${sum_clicks_b} end ;;
   }
 
- measure: spend_variance {
-  type: number
-  value_format_name: percent_2
-  sql: (${spend_a} - ${spend_b})/${spend_b} ;;
- }
+## Variance Measures
+  measure: spend_variance {
+    type: number
+    value_format_name: percent_2
+    sql: (${spend_a} - ${spend_b})/${spend_b} ;;
+  }
 
   measure: impressions_variance {
     type: number
