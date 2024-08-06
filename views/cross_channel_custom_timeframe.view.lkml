@@ -92,6 +92,34 @@ view: cross_channel_custom_timeframe {
     sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY)) ;;
   }
 
+## E2 - Distance between End of Timeframe A and Start of Timeframe B - Don't make it an ABSOLUTE VALUE
+  dimension: date_align_part1 {
+    type: number
+    sql: date_DIFF({% date_end timeframe_a %} , {% date_start timeframe_b %}, DAY) ;;
+  }
+# A2 - Number of Days in Timeframe A
+  dimension: date_align_part2 {
+    type: number
+    sql: date_DIFF({% date_start timeframe_a %} , {% date_end timeframe_a %}, DAY) ;;
+  }
+#B1 - Number of Days in Timeframe B
+  dimension: date_align_part3 {
+    type: number
+    sql: date_DIFF({% date_start timeframe_b %} , {% date_end timeframe_b %}, DAY) ;;
+  }
+
+# =B3-$E$2-($C$2-1)
+  dimension: date_transformed {
+    type: date
+    sql: DATE_ADD(${date_date} , ${date_align_part1} - (${date_align_part2} - 1)) ;;
+  }
+
+  dimension: date_transformed_align {
+    type: date
+    sql: DATE_DIFF(${date_transformed}, ${date_date}, DAY)+1 ;;
+  }
+
+
   dimension: camp_audience {
       type: string
       sql: ${TABLE}.`Camp Audience` ;;
