@@ -90,7 +90,7 @@ view: cross_channel_custom_timeframe {
   dimension: date_align {
     type: number
     sql: ABS(date_DIFF(CURRENT_DATE(),CURRENT_DATE(), DAY))
-        }
+  }
 
 
   dimension: camp_audience {
