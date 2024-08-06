@@ -922,11 +922,11 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: .75em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.spend_variance._value > 0 %}
-                       <p style="color:green;">{{ cross_channel_custom_timeframe.spend_variance._value }}</p>
+                       <p style="color:green;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.spend_variance._value == 0 %}
-                      <p style="color:yellow;">{{ cross_channel_custom_timeframe.spend_variance._value }}</p>
+                      <p style="color:yellow;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >{{ cross_channel_custom_timeframe.spend_variance._value }}</p>
+                        <p style="color:red;" >{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
                     {% endif %}
                   </div>
                   </b>
