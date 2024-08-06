@@ -581,25 +581,55 @@ view: cross_channel_custom_timeframe {
 
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
-  measure: SocialTSR {
+  measure: ThumbStopRate {
     type: number
     value_format_name: percent_2
     sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
   }
 
-  measure: SocialTSR_a {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+  dimension: 2_3_sec_video_views_dim {
+    type: number
+    sql: ${TABLE}.`2_3 sec video views` ;;
   }
 
-  measure: SocialTSR_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+  dimension: paid_social_impressions_dim {
+    type: number
+    sql:${TABLE}.`Paid Social Impressions` ;;
   }
+
+  measure: sum_2_3_sec_video_views_a {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${2_3_sec_video_views_dim} END;;
+  }
+
+  measure: sum_2_3_sec_video_views_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${2_3_sec_video_views_dim} END;;
+  }
+
+  measure: sum_paid_social_impressions_dim_a {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${paid_social_impressions_dim} END;;
+  }
+
+  measure: sum_paid_social_impressions_dim_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${paid_social_impressions_dim} END;;
+  }
+
+  measure: ThumbStopRate_a {
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_paid_social_impressions_dim_a} = 0 then 0 else (${sum_2_3_sec_video_views_a}/${sum_paid_social_impressions_dim_a}) end;;
+  }
+
+  measure: ThumbStopRate_b {
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_paid_social_impressions_dim_b} = 0 then 0 else (${sum_2_3_sec_video_views_b}/${sum_paid_social_impressions_dim_b}) end;;
+    }
+
+
 
 ##  o CF CAC = spend / Total CF Sales
   measure: CF_CAC {
@@ -608,19 +638,33 @@ view: cross_channel_custom_timeframe {
     sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
   }
 
-  measure: CF_CAC_a {
+  dimension: total_cf_sales_dim {
+    type: number
+    sql: ${TABLE}.`Total CF Sales` ;;
+  }
+
+  measure: sum_total_cf_sales_a {
     type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${total_cf_sales_dim} END;;
+  }
+
+  measure: sum_total_cf_sales_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${total_cf_sales_dim} END;;
+  }
+
+  measure: CF_CAC_a {
+    type: number
     value_format_name: percent_3
-    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
-    filters: [group_a_yesno: "yes"]
+    sql: case when ${sum_spend_a} = 0 then 0 else ${sum_spend_a}/${sum_total_cf_sales_a} end;;
   }
 
   measure: CF_CAC_b {
-    type: sum
+    type: number
     value_format_name: percent_3
-    sql: (case when sum(NULLIF(${TABLE}.`Total CF Sales`,0)) = 0 then 0 else sum( ${TABLE}.Spend) end)/ sum(NULLIF(${TABLE}.`Total CF Sales`,0))  ;;
-    filters: [group_b_yesno: "yes"]
+    sql: case when ${sum_spend_b} = 0 then 0 else ${sum_spend_b}/ ${sum_total_cf_sales_b} end ;;
   }
+
 
 ##  o CF CVR = Total CF Sales / Clicks
   measure: CF_CVR {
@@ -629,18 +673,32 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
   }
 
-  measure: CF_CVR_a {
+  dimension: clicks_dim {
+    type: number
+    sql: ${TABLE}.Clicks ;;
+  }
+
+  measure: sum_clicks_a {
     type: sum
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${clicks_dim} END;;
+  }
+
+  measure: sum_clicks_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${clicks_dim} END;;
+  }
+
+
+  measure: CF_CVR_a {
+    type: number
     value_format_name: percent_3
-    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: case when ${sum_clicks_a} = 0 then 0 else ${sum_total_cf_sales_a}/${sum_clicks_a} end;;
   }
 
   measure: CF_CVR_b {
-    type: sum
+    type: number
     value_format_name: percent_3
-    sql: sum(${TABLE}.`Total CF Sales`)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_total_cf_sales_b}/ ${sum_clicks_b} end ;;
   }
 
 ##  o CF CPATC = Spend / Total CF ATCs
@@ -650,19 +708,34 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
   }
 
-  measure: CF_CPATC_a {
+  dimension: total_cf_atcs_dim {
+    type: number
+    sql: ${TABLE}.`Total CF ATCs` ;;
+  }
+
+  measure: sum_total_cf_atcs_a {
     type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${total_cf_atcs_dim} END;;
+  }
+
+  measure: sum_total_cf_atcs_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${total_cf_atcs_dim} END;;
+  }
+
+  measure: CF_CPATC_a {
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_total_cf_atcs_a} = 0 then 0 else ${sum_spend_a}/${sum_total_cf_atcs_a} end;;
   }
 
   measure: CF_CPATC_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total CF ATCs`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_total_cf_atcs_b} = 0 then 0 else ${sum_spend_b}/ ${sum_total_cf_atcs_b} end ;;
   }
+
+
 
 ##  o CF ATC Rate = Total CF ATCs / Clicks
   measure: CF_ATC_Rate {
@@ -672,18 +745,17 @@ view: cross_channel_custom_timeframe {
   }
 
   measure: CF_ATC_Rate_a {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_clicks_a} = 0 then 0 else ${sum_total_cf_atcs_a}/${sum_clicks_a} end;;
   }
 
   measure: CF_ATC_Rate_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(NULLIF(${TABLE}.`Total CF ATCs`,0))/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_total_cf_atcs_b}/ ${sum_clicks_b} end ;;
   }
+
 
 ##  o CPV = Spend / Total Sessions
   measure: CPV {
@@ -692,19 +764,33 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
   }
 
-  measure: CPV_a {
+  dimension: total_sessions_dim {
+    type: number
+    sql: ${TABLE}.`Total Sessions` ;;
+  }
+
+  measure: sum_total_sessions_a {
     type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${total_sessions_dim} END;;
+  }
+
+  measure: sum_total_sessions_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${total_sessions_dim} END;;
+  }
+
+  measure: CPV_a {
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_total_sessions_a} = 0 then 0 else ${sum_spend_a}/${sum_total_sessions_a} end;;
   }
 
   measure: CPV_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Total Sessions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_total_sessions_b} = 0 then 0 else ${sum_spend_b}/ ${sum_total_sessions_b} end ;;
   }
+
 
 # CPQV - Spend/Quality Visitors
   measure: CPQV {
@@ -713,18 +799,31 @@ view: cross_channel_custom_timeframe {
     sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
   }
 
-  measure: CPQV_a {
+  dimension: qualified_visitors_dim {
+    type: number
+    sql: ${TABLE}.`Qualified Visitors` ;;
+  }
+
+  measure: sum_qualified_visitors_a {
     type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${qualified_visitors_dim} END;;
+  }
+
+  measure: sum_qualified_visitors_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${qualified_visitors_dim} END;;
+  }
+
+  measure: CPQV_a {
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_qualified_visitors_a} = 0 then 0 else ${sum_spend_a}/${sum_qualified_visitors_a} end;;
   }
 
   measure: CPQV_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.`Qualified Visitors`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: usd
+    sql: case when ${sum_total_sessions_b} = 0 then 0 else ${sum_spend_b}/ ${sum_qualified_visitors_b} end ;;
   }
 
 ##  o YouTube VVR = Video Views / YouTube Impressions
@@ -734,19 +833,33 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
   }
 
-  measure: YouTube_VVR_a {
+  dimension: youtube_impressions_dim {
+    type: number
+    sql: ${TABLE}.`YouTube Impressions` ;;
+  }
+
+  measure: sum_youtube_impressions_a {
     type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    sql: CASE WHEN {% condition timeframe_a %} ${date_raw} {% endcondition %} THEN ${youtube_impressions_dim} END;;
+  }
+
+  measure: sum_youtube_impressions_b {
+    type: sum
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN ${youtube_impressions_dim} END;;
+  }
+
+  measure: YouTube_VVR_a {
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_youtube_impressions_a} = 0 then 0 else ${sum_total_sessions_a}/${sum_youtube_impressions_a} end;;
   }
 
   measure: YouTube_VVR_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Total Sessions`)/ sum(NULLIF(${TABLE}.`YouTube Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_youtube_impressions_b} = 0 then 0 else ${sum_total_sessions_b}/ ${sum_youtube_impressions_b} end ;;
   }
+
 
 ##  o Amazon Vid RR = Amazon Video 1P Page Views / Amazon Video Impressions
   measure: Amazon_VRR{
@@ -755,40 +868,19 @@ view: cross_channel_custom_timeframe {
     sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
   }
 
-  measure: Amazon_VVR_a {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
+  measure: Amazon_VRR_a {
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_amazon_video_impressions_a} = 0 then 0 else ${sum_amazon_video_1p_page_views_a}/${sum_amazon_video_impressions_a} end;;
   }
 
-  measure: Amazon_VVR_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`Amazon Video 1P Page Views`)/ sum(NULLIF(${TABLE}.`Amazon Video Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
+  measure: Amazon_VRR_b {
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_amazon_video_impressions_b} = 0 then 0 else ${sum_amazon_video_1p_page_views_b}/ ${sum_amazon_video_impressions_b} end ;;
   }
 
 ##  o Social TSR = 2/3 sec video views / Paid Social Impressions
-  measure: Thumb_Stop_Rate{
-    type: number
-    value_format_name: percent_2
-    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
-  }
-
-  measure: Thumb_Stop_Rate_a {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
-    filters: [group_a_yesno: "yes"]
-  }
-
-  measure: Thumb_Stop_Rate_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum(${TABLE}.`2_3 sec video views`)/ sum(NULLIF(${TABLE}.`Paid Social Impressions`,0)) ;;
-    filters: [group_b_yesno: "yes"]
-  }
 
 ## CPC = Spend / clicks
   measure: CostPerClick {
@@ -798,19 +890,15 @@ view: cross_channel_custom_timeframe {
   }
 
   measure: CostPerClick_a {
-    type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_a_yesno: "yes"]
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_clicks_a} = 0 then 0 else ${sum_spend_a}/${sum_clicks_a} end;;
   }
 
   measure: CostPerClick_b {
-    type: sum
-    value_format_name: percent_3
-    sql: sum( ${TABLE}.Spend)/ sum(NULLIF(${TABLE}.Clicks,0)) ;;
-    filters: [group_b_yesno: "yes"]
+    type: number
+    value_format_name: percent_2
+    sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_spend_b}/ ${sum_clicks_b} end ;;
   }
-
-
 
 }
