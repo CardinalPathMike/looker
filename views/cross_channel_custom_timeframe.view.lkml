@@ -899,15 +899,30 @@ view: cross_channel_custom_timeframe {
     sql: case when ${sum_clicks_b} = 0 then 0 else ${sum_spend_b}/ ${sum_clicks_b} end ;;
   }
 
+ measure: spend_variance {
+  type: number
+  value_format_name: percent_2
+  sql: (${spend_a} - ${spend_b})/${spend_b} ;;
+  html:   {% if value > 0 %}
+            <p style="color: black; background-color: lightgreen;">{{ value }}</p>
+          {% elsif value == 0 %}
+            <p style="color: black; background-color: yellow;">{{ value }}</p>
+          {% else %}
+            <p style="color: white; background-color: red;">{{ value }}</p>
+        {% endif %}
+  ;;
+ }
+
  measure: custom_single_viz_spend {
 
   type: count
   html: <div class="vis">
-      <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #5A2FC2, #F84066); color:#ffffff">
-      <font color="white"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
-      <font color="white"><center><b>Prior Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font><br>
-      <p style="color:#ffffff;">{{ rendered_value }} Total Events </p>
-      </p></center>
+          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #5A2FC2, #F84066); color:#ffffff">
+            <center>
+            <p><font color="white"><center><b>Current Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
+            <p><font color="white"><center><b>Prior Timeframe - Spend:</b>&nbsp; {{cross_channel_custom_timeframe.spend_a._rendered_value}}</font></p>
+            <p style="color:#ffffff;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }} Total Events </p>
+            </center>
       </div>
       </div>
    ;;
