@@ -938,4 +938,17 @@ view: cross_channel_custom_timeframe {
    ;;
   }
 
+  measure: kpi_banner {
+
+    type: count
+    html:
+      <div class="vis">
+          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <p>
+              <font color="white">KPI Variances</font>
+            </p>
+      </div>
+      </div>;;
+  }
+
 }
