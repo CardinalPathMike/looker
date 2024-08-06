@@ -903,14 +903,6 @@ view: cross_channel_custom_timeframe {
   type: number
   value_format_name: percent_2
   sql: (${spend_a} - ${spend_b})/${spend_b} ;;
-  html:   {% if value > 0 %}
-            <p style="color:green;">{{ value }}</p>
-          {% elsif value == 0 %}
-            <p style="color:yellow;">{{ value }}</p>
-          {% else %}
-            <p style="color:red;" >{{ value }}</p>
-        {% endif %}
-  ;;
  }
 
  measure: custom_single_viz_spend {
@@ -927,8 +919,16 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 2em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
                   <div style="font-size: .75em;">Prior</div>
                   <div style="font-size: 2em;">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div><br>
-                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_variance._rendered_value}}</div>
+                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1.5em;">
+                    {% if cross_channel_custom_timeframe.spend_variance.value > 0 %}
+                       <p style="color:green;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
+                    {% elsif cross_channel_custom_timeframe.spend_variance.value == 0 %}
+                      <p style="color:yellow;">{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
+                    {% else %}
+                        <p style="color:red;" >{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
+                    {% endif %}
+                  </div>
                   </b>
                 </center>
               </font>
