@@ -917,8 +917,8 @@ view: cross_channel_custom_timeframe {
 
   type: count
   html: <div class="vis">
-          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #ffffff, #91aa2d); color:#ffffff">
-            <p><font color="white"><center><b>Current Timeframe - Spend:</b></center></font></p>
+          <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <p><font color="white"><center><b>Current Timeframe - Spend:</b></center></font></p><br>
             <p><font color="white"><center><b>{{cross_channel_custom_timeframe.spend_a._rendered_value}}</b></center></font></p>
             <p><font color="white"><center><b>Prior Timeframe - Spend:</b></center></font></p>
             <p><font color="white"><center><b>{{cross_channel_custom_timeframe.spend_b._rendered_value}}</b></center></font></p>
