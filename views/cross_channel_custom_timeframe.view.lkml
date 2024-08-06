@@ -904,11 +904,11 @@ view: cross_channel_custom_timeframe {
   value_format_name: percent_2
   sql: (${spend_a} - ${spend_b})/${spend_b} ;;
   html:   {% if value > 0 %}
-            <p style="color: green;">{{ value }}</p>
+            <p style="font-color:green;">{{ value }}</p>
           {% elsif value == 0 %}
-            <p style="color: yellow;">{{ value }}</p>
+            <p style="font-color:yellow;">{{ value }}</p>
           {% else %}
-            <p style="color: red;" >{{ value }}</p>
+            <p style="font-color:red;" >{{ value }}</p>
         {% endif %}
   ;;
  }
@@ -922,13 +922,13 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div font-size: 2em;>Spend</div><br>
-                  <div font-size: .25em;>Current</div><br>
-                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
-                  <div font-size: .5em;>Prior</div><br>
-                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br><br>
-                  <div font-size: .5em;>Variance</div><br>
-                  <div font-size: 1em;>{{cross_channel_custom_timeframe.spend_variance._rendered_value}}</div><br><br>
+                  <div style="font-size: 1.5em;">Spend</div><br><br>
+                  <div style="font-size: .75em;">Current</div><br>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
+                  <div style="font-size: .75em;">Prior</div><br>
+                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br><br>
+                  <div style="font-size: .75em;">Variance</div><br>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_variance._rendered_value}}</div><br><br>
                   </b>
                 </center>
               </font>
