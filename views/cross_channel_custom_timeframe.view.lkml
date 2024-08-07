@@ -110,13 +110,13 @@ view: cross_channel_custom_timeframe {
 
   dimension: total_alignment_needed{
     type: number
-    sql: ${date_align_part1} - (${date_align_part2} - 1) ;;
+    sql: ${date_align_part1} - (${date_align_part2} + 1) ;;
   }
 
 # =B3-$E$2-($C$2-1)
   dimension: date_transformed {
     type: date
-    sql: {% condition timeframe_b %} DATE_ADD(${date_raw} , INTERVAL ${total_alignment_needed} DAY) {% endcondition %} END  ;;
+    sql: {% condition timeframe_b %} DATE_ADD(${date_raw} , INTERVAL ${total_alignment_needed} DAY) {% endcondition %} else ${date_raw} END  ;;
   }
 
   dimension: date_transformed_align {
