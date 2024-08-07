@@ -218,6 +218,7 @@ view: cross_channel_custom_timeframe {
       label: "Total Sessions"
       value: "total_sessions"
     }
+    default_value: "impressions"
   }
 
   measure: KPI_A {
