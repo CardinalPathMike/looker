@@ -116,7 +116,7 @@ view: cross_channel_custom_timeframe {
 
   dimension: date_transformed_align {
     type: date
-    sql: DATE_DIFF(${date_transformed}, ${date_date}, DAY) +1 ;;
+    sql: DATE_DIFF(${date_transformed}, ${date_date}, DAY) ;;
   }
 
 
