@@ -936,31 +936,31 @@ view: cross_channel_custom_timeframe {
 
   measure: spend_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${spend_a} - ${spend_b})/${spend_b} ;;
   }
 
   measure: impressions_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${impressions_a} - ${impressions_b})/${impressions_b} ;;
   }
 
   measure: CPM_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${CPM_a} - ${CPM_b})/${CPM_b} ;;
   }
 
   measure: clicks_variance {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.00\%;0.00%"
     sql: (${clicks_a} - ${clicks_b})/${clicks_b} ;;
   }
 
   measure: CTR_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${CTR_a} - ${CTR_b})/${CTR_b} ;;
   }
 
@@ -972,31 +972,31 @@ view: cross_channel_custom_timeframe {
 
   measure: cf_sales_variance {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.00\%;0.00%"
     sql: (${cf_sales_a} - ${cf_sales_b})/${cf_sales_b} ;;
   }
 
   measure: CF_CAC_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${CF_CAC_a} - ${CF_CAC_b})/${CF_CAC_b} ;;
   }
 
   measure: CF_CVR_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${CF_CVR_a} - ${CF_CVR_b})/${CF_CVR_b} ;;
   }
 
   measure: CF_ATC_Rate_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${CF_ATC_Rate_a} - ${CF_ATC_Rate_b})/${CF_ATC_Rate_b} ;;
   }
 
   measure: CF_ATCs_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%;0.00%"
     sql: (${cf_atcs_a} - ${cf_atcs_b})/${cf_atcs_b} ;;
   }
 
@@ -1007,7 +1007,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=49%; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b><span></div><div style="width:49% text-align:right"><span>dentsu | PELOTON</span></div>
+            <div style="width=5em; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b><span></div><div style="width:49% text-align:right"><span>dentsu | PELOTON</span></div>
        </div>
       </div>;;
   }
