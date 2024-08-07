@@ -111,12 +111,12 @@ view: cross_channel_custom_timeframe {
 # =B3-$E$2-($C$2-1)
   dimension: date_transformed {
     type: date
-    sql: DATE_ADD(${date_date} , ${date_align_part1} - (${date_align_part2} - 1)) ;;
+    sql: DATE_ADD(${date_date} , ${date_align_part1} - (${date_align_part2} - 1), DAY) ;;
   }
 
   dimension: date_transformed_align {
     type: date
-    sql: DATE_DIFF(${date_transformed}, ${date_date}, DAY)+1 ;;
+    sql: DATE_DIFF(${date_transformed}, ${date_date}, DAY) +1 ;;
   }
 
 
