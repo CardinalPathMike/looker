@@ -286,27 +286,27 @@ view: cross_channel_custom_timeframe {
     type: number
     sql:
     {% if KPI_Selector._parameter_value == 'spend' %}
-    ${spend_a}
+    ${spend_b}
     {% elsif KPI_Selector._parameter_value == 'impressions' %}
-    ${impressions_a}
+    ${impressions_b}
     {% elsif KPI_Selector._parameter_value == 'bpq' %}
-    ${impressions_a}
+    ${impressions_b}
     {% elsif KPI_Selector._parameter_value == 'cpm' %}
-    ${CPM_a}
+    ${CPM_b}
     {% elsif KPI_Selector._parameter_value == 'clicks' %}
-    ${clicks_a}
+    ${clicks_b}
     {% elsif KPI_Selector._parameter_value == 'ctr' %}
-    ${CTR_a}
+    ${CTR_b}
     {% elsif KPI_Selector._parameter_value == 'cf_atc_rate' %}
-    ${CF_ATC_Rate_a}
+    ${CF_ATC_Rate_b}
     {% elsif KPI_Selector._parameter_value == 'cf_cpatc' %}
-    ${CF_CPATC_a}
+    ${CF_CPATC_b}
     {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
-    ${cf_sales_a}
+    ${cf_sales_b}
     {% elsif KPI_Selector._parameter_value == 'cf_cac' %}
-    ${CF_CAC_a}
+    ${CF_CAC_b}
     {% else %}
-    ${CF_CVR_a}
+    ${CF_CVR_b}
     {% endif %};;
     }
 
@@ -1117,7 +1117,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=5em; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b></span></div><div style="width:49% text-align:right"><span>dentsu | PELOTON</span></div>
+            <div style="width=49%; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b></span></div><div style="width:30% text-align:right"><span>dentsu | PELOTON</span></div>
        </div>
       </div>;;
   }
@@ -1523,7 +1523,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=5em;"><span><b>{{ KPI_Selector._parameter_value }} from</b></span></div><div style="color: #1b1662"><span><b>{{ cross_channel_custom_timeframe.timeframe_a._filterable_value }}</b></span></div>
+            <div style="width=5em;"><span><b>{{ KPI_Selector._parameter_value }} from</b></span></div><div style="color: #1b1662"><span><b>{{ cross_channel_custom_timeframe.timeframe_a._rendered_value }}</b></span></div>
        </div>
       </div>;;
   }
