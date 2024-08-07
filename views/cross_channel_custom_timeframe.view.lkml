@@ -326,6 +326,36 @@ view: cross_channel_custom_timeframe {
     {% endif %};;
     }
 
+  measure: KPI_label {
+    type: string
+    html:
+    {% if KPI_Selector._parameter_value == 'spend' %}
+     <p style="color:white;">&nbsp;Spend&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'impressions' %}
+    <p style="color:white;">&nbsp;Impressions&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'bpq' %}
+    <p style="color:white;">&nbsp;Brand Product Queries&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'cpm' %}
+    <p style="color:white;">&nbsp;CPM&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'clicks' %}
+    <p style="color:white;">&nbsp;Clicks&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'ctr' %}
+     <p style="color:white;">&nbsp;CTR&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'cf_atc_rate' %}
+    <p style="color:white;">&nbsp;CF ATC Rate&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'cf_cpatc' %}
+    <p style="color:white;">&nbsp;CF CPATC&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
+    <p style="color:white;">&nbsp;CF Sales&nbsp;</p>
+    {% elsif KPI_Selector._parameter_value == 'cf_cac' %}
+    <p style="color:white;">&nbsp;CF CAC&nbsp;</p>
+    {% else %}
+    <p style="color:white;">&nbsp;CF CVR&nbsp;</p>
+    {% endif %};;
+
+  }
+
+
 # Measures
   ## filtered measure A
   measure: spend {
@@ -1540,7 +1570,7 @@ view: cross_channel_custom_timeframe {
      html:
       <div class="vis" >
         <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <span style="color: ##1408C9"><b>{{ cross_channel_custom_timeframe.KPI_Selector._parameter_value }}{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} to {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
+            <span style="color: ##1408C9"><b>{{ cross_channel_custom_timeframe.KPI_label._rendered_value }}{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} to {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
         </div>
     </div>;;
   }
