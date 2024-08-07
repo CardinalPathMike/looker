@@ -79,6 +79,7 @@ view: cross_channel_custom_timeframe {
   }
   dimension: first_date_period_a {
     type: date
+    value_format: "m-d-yyyy"
     sql: {% date_start timeframe_a %} ;;
   }
 
@@ -89,6 +90,7 @@ view: cross_channel_custom_timeframe {
 
   dimension: last_date_period_a {
     type: date
+    value_format: "m-d-yyyy"
     sql: {% date_end timeframe_a %} ;;
   }
 
