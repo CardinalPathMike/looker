@@ -1033,7 +1033,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.spend_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.spend_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1066,7 +1066,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1099,7 +1099,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1128,11 +1128,11 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CPM_variance._value > 0 %}
-                       <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
+                       <p style="color:red;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.CPM_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
+                        <p style="color:green;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1165,7 +1165,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.clicks_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.clicks_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.clicks_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.clicks_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1198,7 +1198,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CTR_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CTR_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CTR_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CTR_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1227,11 +1227,11 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CPATC_variance._value > 0 %}
-                       <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
+                       <p style="color:red;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.CF_CPATC_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
+                        <p style="color:green;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1264,7 +1264,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.cf_sales_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.cf_sales_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.cf_sales_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.cf_sales_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1297,7 +1297,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CF_CAC_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1330,7 +1330,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CF_CVR_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CVR_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CVR_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CVR_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1363,7 +1363,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CF_ATC_Rate_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1396,7 +1396,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CF_ATCs_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
+                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }} * -1</p>
                     {% endif %}
                   </div>
                   </b>
