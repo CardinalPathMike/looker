@@ -81,6 +81,7 @@ view: cross_channel_custom_timeframe {
     type: date
     value_format: "m-d-yyyy"
     sql: {% date_start timeframe_a %} ;;
+    html: {{ rendered_value | date: "%b %d, %y" }} ;;
   }
 
   dimension: first_date_period_b {
@@ -92,11 +93,13 @@ view: cross_channel_custom_timeframe {
     type: date
     value_format: "m-d-yyyy"
     sql: {% date_end timeframe_a %} ;;
+    html: {{ rendered_value | date: "%b %d, %y" }} ;;
   }
 
   dimension: last_date_period_b {
     type: date
     sql: {% date_end timeframe_b %} ;;
+    html: {{ rendered_value | date: "%b %d, %y" }} ;;
   }
 
 
