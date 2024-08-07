@@ -199,6 +199,56 @@ view: cross_channel_custom_timeframe {
     sql: ${TABLE}.Partner ;;
   }
 
+## KPI Selector
+  parameter: KPI_Selector {
+    type: unquoted
+    allowed_value: {
+      label: "Impressions"
+      value: "impressions"
+    }
+    allowed_value: {
+      label: "Clicks"
+      value: "clicks"
+    }
+    allowed_value: {
+      label: "CF Sales"
+      value: "cf_sales"
+    }
+    allowed_value: {
+      label: "Total Sessions"
+      value: "total_sessions"
+    }
+  }
+
+  measure: KPI_A {
+    type: number
+    sql:
+    {% if KPI_Selector._parameter_value == 'impressions' %}
+    ${impressions_a}
+    {% elsif KPI_Selector._parameter_value == 'clicks' %}
+    ${clicks_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
+    ${cf_sales_a}
+    {% else %}
+    ${sessions_a}
+    {% endif %};;
+
+  }
+
+  measure: KPI_B {
+    type: number
+    sql:
+    {% if KPI_Selector._parameter_value == 'impressions' %}
+    ${impressions_b}
+    {% elsif KPI_Selector._parameter_value == 'clicks' %}
+    ${clicks_b}
+    {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
+    ${cf_sales_b}
+    {% else %}
+    ${sessions_b}
+    {% endif %};;
+
+    }
 
 # Measures
   ## filtered measure A
