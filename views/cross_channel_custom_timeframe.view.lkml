@@ -100,18 +100,23 @@ view: cross_channel_custom_timeframe {
 # A2 - Number of Days in Timeframe A
   dimension: date_align_part2 {
     type: number
-    sql: date_DIFF({% date_start timeframe_a %} , {% date_end timeframe_a %}, DAY) ;;
+    sql: date_DIFF({% date_end timeframe_a %} , {% date_start timeframe_a %}, DAY) ;;
   }
 #B1 - Number of Days in Timeframe B
   dimension: date_align_part3 {
     type: number
-    sql: date_DIFF({% date_start timeframe_b %} , {% date_end timeframe_b %}, DAY) ;;
+    sql: date_DIFF({% date_end timeframe_b %} , {% date_start timeframe_b %}, DAY) ;;
+  }
+
+  dimension: total_alignment_needed{
+    type: number
+    sql: ${date_align_part1} - (${date_align_part2} - 1) ;;
   }
 
 # =B3-$E$2-($C$2-1)
   dimension: date_transformed {
     type: date
-    sql: DATE_ADD(${date_date} , ${date_align_part1} - (${date_align_part2} - 1), DAY) ;;
+    sql: DATE_ADD(${date_date} , ${total_alignment_needed}, DAY) ;;
   }
 
   dimension: date_transformed_align {
