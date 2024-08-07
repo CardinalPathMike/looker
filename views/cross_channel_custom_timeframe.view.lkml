@@ -954,7 +954,7 @@ view: cross_channel_custom_timeframe {
 
   measure: clicks_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%"
     sql: (${clicks_a} - ${clicks_b})/${clicks_b} ;;
   }
 
@@ -966,13 +966,13 @@ view: cross_channel_custom_timeframe {
 
   measure: CF_CPATC_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%"
     sql: (${CF_CPATC_a} - ${CF_CPATC_b})/${CF_CPATC_b} ;;
   }
 
   measure: cf_sales_variance {
     type: number
-    value_format_name: percent_2
+    value_format: "0.00\%"
     sql: (${cf_sales_a} - ${cf_sales_b})/${cf_sales_b} ;;
   }
 
@@ -1231,7 +1231,7 @@ view: cross_channel_custom_timeframe {
                     {% elsif cross_channel_custom_timeframe.CF_CPATC_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:green;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}*-1</p>
+                        <p style="color:green;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
                     {% endif %}
                   </div>
                   </b>
