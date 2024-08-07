@@ -326,7 +326,7 @@ view: cross_channel_custom_timeframe {
     {% endif %};;
     }
 
-  measure: KPI_label {
+  dimension: KPI_label {
     type: string
     html:
     {% if KPI_Selector._parameter_value == 'spend' %}
