@@ -79,9 +79,7 @@ view: cross_channel_custom_timeframe {
   }
   dimension: first_date_period_a {
     type: date
-    value_format: "m-d-yyyy"
     sql: {% date_start timeframe_a %} ;;
-    html: {{ rendered_value | date: "%b %d, %y" }} ;;
   }
 
   dimension: first_date_period_b {
@@ -91,7 +89,7 @@ view: cross_channel_custom_timeframe {
 
   dimension: first_date_period_b_display {
     type: date
-    sql: ${first_date_period_a};;
+    sql: ${first_date_period_b};;
     html: <p>&nbsp;{{ rendered_value | date: "%b %d, %y" }} &nbsp;</p> ;;
   }
 
