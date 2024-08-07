@@ -1016,7 +1016,7 @@ view: cross_channel_custom_timeframe {
   type: count
   group_label: "Report Elements"
   html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662); color:#ffffff">
+          <div class="vis-single-value" style="background-color:#1b1662; color:#ffffff">
             <p>
               <font color="white">
                 <center>
