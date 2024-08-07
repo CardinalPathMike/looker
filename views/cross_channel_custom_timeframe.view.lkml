@@ -1570,7 +1570,7 @@ view: cross_channel_custom_timeframe {
      html:
       <div class="vis" >
         <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <span style="color: ##1408C9"><b>{{ cross_channel_custom_timeframe.KPI_label._rendered_value }}{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} to {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
+            <span style="color: ##1408C9"><b>{{ cross_channel_custom_timeframe.KPI_label._value }}{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} to {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
         </div>
     </div>;;
   }
