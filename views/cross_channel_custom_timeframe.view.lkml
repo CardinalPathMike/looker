@@ -203,35 +203,81 @@ view: cross_channel_custom_timeframe {
   parameter: KPI_Selector {
     type: unquoted
     allowed_value: {
+      label: "Spend"
+      value: "spend"
+    }
+    allowed_value: {
       label: "Impressions"
       value: "impressions"
+    }
+    allowed_value: {
+      label: "Brand Product Queries"
+      value: "bqp"
+    }
+    allowed_value: {
+      label: "CPM"
+      value: "cpm"
     }
     allowed_value: {
       label: "Clicks"
       value: "clicks"
     }
     allowed_value: {
+      label: "CTR"
+      value: "ctr"
+    }
+    allowed_value: {
+      label: "CF ATC"
+      value: "cf_atc"
+    }
+    allowed_value: {
+      label: "CF ATC Rate"
+      value: "cf_atc_rate"
+    }
+    allowed_value: {
+      label: "CF CPATC"
+      value: "cf_cpatc"
+    }
+    allowed_value: {
       label: "CF Sales"
       value: "cf_sales"
     }
     allowed_value: {
-      label: "Total Sessions"
-      value: "total_sessions"
+      label: "CF CAC"
+      value: "cf_cac"
     }
-    default_value: "impressions"
+    allowed_value: {
+      label: "CF CVR"
+      value: "cf_cvr"
+    }
+    default_value: "spend"
   }
 
   measure: KPI_A {
     type: number
     sql:
-    {% if KPI_Selector._parameter_value == 'impressions' %}
+    {% if KPI_Selector._parameter_value == 'spend' %}
+    ${spend_a}
+    {% elsif KPI_Selector._parameter_value == 'impressions' %}
     ${impressions_a}
+    {% elsif KPI_Selector._parameter_value == 'bpq' %}
+    ${impressions_a}
+    {% elsif KPI_Selector._parameter_value == 'cpm' %}
+    ${CPM_a}
     {% elsif KPI_Selector._parameter_value == 'clicks' %}
     ${clicks_a}
+    {% elsif KPI_Selector._parameter_value == 'ctr' %}
+    ${CTR_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_atc_rate' %}
+    ${CF_ATC_Rate_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_cpatc' %}
+    ${CF_CPATC_a}
     {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
     ${cf_sales_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_cac' %}
+    ${CF_CAC_a}
     {% else %}
-    ${sessions_a}
+    ${CF_CVR_a}
     {% endif %};;
 
   }
@@ -239,16 +285,29 @@ view: cross_channel_custom_timeframe {
   measure: KPI_B {
     type: number
     sql:
-    {% if KPI_Selector._parameter_value == 'impressions' %}
-    ${impressions_b}
+    {% if KPI_Selector._parameter_value == 'spend' %}
+    ${spend_a}
+    {% elsif KPI_Selector._parameter_value == 'impressions' %}
+    ${impressions_a}
+    {% elsif KPI_Selector._parameter_value == 'bpq' %}
+    ${impressions_a}
+    {% elsif KPI_Selector._parameter_value == 'cpm' %}
+    ${CPM_a}
     {% elsif KPI_Selector._parameter_value == 'clicks' %}
-    ${clicks_b}
+    ${clicks_a}
+    {% elsif KPI_Selector._parameter_value == 'ctr' %}
+    ${CTR_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_atc_rate' %}
+    ${CF_ATC_Rate_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_cpatc' %}
+    ${CF_CPATC_a}
     {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
-    ${cf_sales_b}
+    ${cf_sales_a}
+    {% elsif KPI_Selector._parameter_value == 'cf_cac' %}
+    ${CF_CAC_a}
     {% else %}
-    ${sessions_b}
+    ${CF_CVR_a}
     {% endif %};;
-
     }
 
 # Measures
@@ -1058,7 +1117,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=5em; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b><span></div><div style="width:49% text-align:right"><span>dentsu | PELOTON</span></div>
+            <div style="width=5em; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b></span></div><div style="width:49% text-align:right"><span>dentsu | PELOTON</span></div>
        </div>
       </div>;;
   }
@@ -1344,11 +1403,11 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CAC_variance._value > 0 %}
-                       <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
+                       <p style="color:red;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.CF_CAC_variance._value == 0 %}
                       <p style="color:yellow;">&#8680;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
                     {% else %}
-                        <p style="color:red;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
+                        <p style="color:green;" >&#8681;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
                     {% endif %}
                   </div>
                   </b>
@@ -1457,6 +1516,16 @@ view: cross_channel_custom_timeframe {
       </div>
       </div>
    ;;
+  }
+
+  measure: graph_banner {
+    type: count
+    html:
+      <div class="vis" >
+          <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <div style="width=5em;"><span><b>{{ KPI_Selector._parameter_value }} from</b></span></div><div style="color: #1b1662"><span><b>{{ cross_channel_custom_timeframe.timeframe_a._filterable_value }}</b></span></div>
+       </div>
+      </div>;;
   }
 
 
