@@ -87,6 +87,17 @@ view: cross_channel_custom_timeframe {
     sql: {% date_start timeframe_b %} ;;
   }
 
+  dimension: last_date_period_a {
+    type: date
+    sql: {% date_end timeframe_a %} ;;
+  }
+
+  dimension: last_date_period_b {
+    type: date
+    sql: {% date_end timeframe_b %} ;;
+  }
+
+
   dimension: date_align {
     type: number
     sql: ABS(date_DIFF({% date_start timeframe_a %} , {% date_start timeframe_b %}, DAY)) ;;
@@ -1522,8 +1533,8 @@ view: cross_channel_custom_timeframe {
     type: count
     html:
       <div class="vis" >
-          <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=5em;"><span><b>{{ KPI_Selector._parameter_value }} from</b></span></div><div style="color: #1b1662"><span><b>{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }}</b></span></div>
+          <div style="width=100% background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <div style="width=5em;text-align:left"><span><b>{{ KPI_Selector._parameter_label }} from</b></span><span style="color: ##1408C9"><b>{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} to {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span></div>
        </div>
       </div>;;
   }
