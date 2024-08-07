@@ -1049,18 +1049,18 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+          <div class="vis-single-value" style="background-color:#1b1662; color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
                   <div style="font-size: 1em;">Impressions</div><br>
                   <div style="font-size: 1em;">Current</div>
-                  <div style="font-size: 1.25em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
                   <div style="font-size: 1em;">Prior</div>
-                  <div style="font-size: 1.25em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
                   <div style="font-size: 1em;">Variance</div>
-                  <div style="font-size: 1.25em;">
+                  <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.impressions_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
@@ -1082,17 +1082,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+           <div class="vis-single-value" style="background-color:#1b1662; color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
                   <div style="font-size: .75em;">Brand Product Queries</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.impressions_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
@@ -1120,12 +1120,12 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CPM</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CPM_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CPM_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CPM</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CPM_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CPM_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CPM_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CPM_variance._rendered_value }}</p>
@@ -1148,17 +1148,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
-            <p>
+            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
+              <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">Clicks</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.clicks_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.clicks_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">Clicks</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.clicks_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.clicks_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.clicks_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.clicks_variance._rendered_value }}</p>
@@ -1181,17 +1181,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CTR</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CTR_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CTR_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CTR</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CTR_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CTR_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CTR_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CTR_variance._rendered_value }}</p>
@@ -1214,17 +1214,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF CPATC</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CPATC_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CPATC_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF CPATC</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CPATC_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CPATC_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CPATC_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CPATC_variance._rendered_value }}</p>
@@ -1247,17 +1247,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #000000, #91AA2d); color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF Sales</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_sales_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_sales_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF Sales</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.cf_sales_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.cf_sales_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.cf_sales_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.cf_sales_variance._rendered_value }}</p>
@@ -1280,17 +1280,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF CAC</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CAC_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CAC_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF CAC</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CAC_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CAC_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CAC_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CAC_variance._rendered_value }}</p>
@@ -1313,17 +1313,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF CVR</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CVR_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_CVR_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF CVR</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CVR_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_CVR_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_CVR_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_CVR_variance._rendered_value }}</p>
@@ -1346,17 +1346,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF ATC Rate</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF ATC Rate</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.CF_ATC_Rate_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_ATC_Rate_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_ATC_Rate_variance._rendered_value }}</p>
@@ -1379,17 +1379,17 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">CF ATC</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_atcs_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.cf_atcs_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: 1em;">CF ATC</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.cf_atcs_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.cf_atcs_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.CF_ATCs_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.CF_ATCs_variance._rendered_value }}</p>
