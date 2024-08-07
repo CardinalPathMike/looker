@@ -89,6 +89,12 @@ view: cross_channel_custom_timeframe {
     sql: {% date_start timeframe_b %} ;;
   }
 
+  dimension: first_date_period_b_display {
+    type: date
+    sql: ${first_date_period_a};;
+    html: <p>&nbsp;{{ rendered_value | date: "%b %d, %y" }} &nbsp;</p> ;;
+  }
+
   dimension: last_date_period_a {
     type: date
     value_format: "m-d-yyyy"
@@ -1570,14 +1576,14 @@ view: cross_channel_custom_timeframe {
     type: count
      html:
       <div class="vis" >
-        <div class="vis-single-value">
-            <div style="width=100% font-size:2em; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+        <div class="vis-single-value" style="width=100% font-size:2em; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <div>
                 <span><b>{{ cross_channel_custom_timeframe.KPI_label._value }}</b></span>
             </div>
             <div style="width=100% background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d);">
               <span style="color: #1408C9 font-size:2em"><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
               <span><b>&nbsp; vs </b></span>
-              <span style="color: #8C75F5 font-size:2em "><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_b._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_b._rendered_value }}</b></span>
+              <span style="color: #8C75F5 font-size:2em "><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_b_display._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_b._rendered_value }}</b></span>
             </div>
         </div>
     </div>;;
