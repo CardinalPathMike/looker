@@ -1570,13 +1570,15 @@ view: cross_channel_custom_timeframe {
     type: count
      html:
       <div class="vis" >
-        <div style="width=100% font-size:2em; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <span><b>{{ cross_channel_custom_timeframe.KPI_label._value }}</b></span>
-        </div>
-        <div style="width=100% background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d);">
-          <span style="color: #1408C9 font-size:2em"><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
-          <span><b>&nbsp; vs </b></span>
-          <span style="color: #8C75F5 font-size:2em "><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_b._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_b._rendered_value }}</b></span>
+        <div class="vis-single-value">
+            <div style="width=100% font-size:2em; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+                <span><b>{{ cross_channel_custom_timeframe.KPI_label._value }}</b></span>
+            </div>
+            <div style="width=100% background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d);">
+              <span style="color: #1408C9 font-size:2em"><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_a._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_a._rendered_value }}</b></span>
+              <span><b>&nbsp; vs </b></span>
+              <span style="color: #8C75F5 font-size:2em "><b>&nbsp;{{ cross_channel_custom_timeframe.first_date_period_b._rendered_value }} - {{ cross_channel_custom_timeframe.last_date_period_b._rendered_value }}</b></span>
+            </div>
         </div>
     </div>;;
   }
