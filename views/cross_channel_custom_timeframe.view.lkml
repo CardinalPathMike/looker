@@ -14,7 +14,7 @@ view: cross_channel_custom_timeframe {
 
   ## filter determining time range for all "A" measures
   filter: timeframe_a {
-    type: date_time
+    type: date
   }
 
   dimension: date_row_a {
@@ -36,7 +36,7 @@ view: cross_channel_custom_timeframe {
 
   ## filter determining time range for all "B" measures
   filter: timeframe_b {
-    type: date_time
+    type: date
   }
 
   ## flag for "B" measures to only include appropriate time range
