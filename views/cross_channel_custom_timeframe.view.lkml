@@ -1167,7 +1167,7 @@ view: cross_channel_custom_timeframe {
     type: count
     html:
       <div class="vis" >
-          <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div style="display=grid background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
             <div><span style="width=49%; text-align:left"><b>MEDIA THAT MOVES WITH YOU</b></span><spanstyle="width=49%; text-align:right">dentsu | PELOTON</span></div>
        </div>
       </div>;;
