@@ -1005,10 +1005,10 @@ view: cross_channel_custom_timeframe {
   measure: kpi_banner {
     type: count
     html:
-      <div class="vis">
-          <div class="vis-single-value" style="display: fit-content; width: 100%; font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+      <div >
+          <div style="display:flex; width: 100%; font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
             <p><b>MEDIA THAT MOVES WITH YOU</b></p><p style="text-align:right">dentsu | PELOTON</p>
-      </div>
+       </div>
       </div>;;
   }
 
@@ -1021,12 +1021,12 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1em;">Spend</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: .75em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: .75em;">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
+                  <div style="font-size: .75em;">Spend</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br>
+                  <div style="font-size: .1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.spend_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
