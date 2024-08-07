@@ -1006,8 +1006,8 @@ view: cross_channel_custom_timeframe {
     type: count
     html:
       <div >
-          <div style="display:flex; width: 100%; font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <p style="text-align:left"><b>MEDIA THAT MOVES WITH YOU</b></p><p style="text-align:right">dentsu | PELOTON</p>
+          <div style="display:flex; justify-content:space-between; width: 100%; font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <p><b>MEDIA THAT MOVES WITH YOU</b></p><p>dentsu | PELOTON</p>
        </div>
       </div>;;
   }
@@ -1049,18 +1049,18 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: 1.5em;">Impressions</div><br>
-                  <div style="font-size: .75em;">Current</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Prior</div>
-                  <div style="font-size: 2em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
-                  <div style="font-size: .75em;">Variance</div>
-                  <div style="font-size: 1.5em;">
+                  <div style="font-size: 1em;">Impressions</div><br>
+                  <div style="font-size: 1em;">Current</div>
+                  <div style="font-size: 1.25em;">{{cross_channel_custom_timeframe.impressions_a._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Prior</div>
+                  <div style="font-size: 1.25em;">{{cross_channel_custom_timeframe.impressions_b._rendered_value}}</div><br>
+                  <div style="font-size: 1em;">Variance</div>
+                  <div style="font-size: 1.25em;">
                     {% if cross_channel_custom_timeframe.impressions_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.impressions_variance._rendered_value }}</p>
                     {% elsif cross_channel_custom_timeframe.impressions_variance._value == 0 %}
@@ -1082,7 +1082,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1115,7 +1115,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1148,7 +1148,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1181,7 +1181,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1214,7 +1214,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1247,7 +1247,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1280,7 +1280,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1313,7 +1313,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1346,7 +1346,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1379,7 +1379,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
             <p>
               <font color="white">
                 <center>
