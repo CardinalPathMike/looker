@@ -116,7 +116,7 @@ view: cross_channel_custom_timeframe {
 # =B3-$E$2-($C$2-1)
   dimension: date_transformed {
     type: date
-    sql: {% condition timeframe_b %} DATE_ADD(${date_raw} , INTERVAL ${total_alignment_needed} DAY) else ${date_raw} {% endcondition %} ;;
+    sql: CASE WHEN {% condition timeframe_b %} ${date_raw} {% endcondition %} THEN DATE_ADD(${date_raw} , INTERVAL ${total_alignment_needed} DAY) else ${date_raw}  END ;;
   }
 
   dimension: date_transformed_align {
