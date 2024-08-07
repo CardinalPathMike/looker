@@ -1007,7 +1007,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div >
           <div style="display:flex; width: 100%; font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <p><b>MEDIA THAT MOVES WITH YOU</b></p><p style="text-align:right">dentsu | PELOTON</p>
+            <p style="text-align:left"><b>MEDIA THAT MOVES WITH YOU</b></p><p style="text-align:right">dentsu | PELOTON</p>
        </div>
       </div>;;
   }
@@ -1021,7 +1021,7 @@ view: cross_channel_custom_timeframe {
               <font color="white">
                 <center>
                   <b>
-                  <div style="font-size: .75em;">Spend</div><br>
+                  <div style="font-size: 1em;">Spend</div><br>
                   <div style="font-size: 1em;">Current</div>
                   <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
                   <div style="font-size: 1em;">Prior</div>
