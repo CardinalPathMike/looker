@@ -328,30 +328,31 @@ view: cross_channel_custom_timeframe {
 
   dimension: KPI_label {
     type: string
-    html:
-    {% if KPI_Selector._parameter_value == 'spend' %}
-     <p style="color:white;">&nbsp;Spend&nbsp;</p>
+    sql:
+     {% if KPI_Selector._parameter_value == 'spend' %}
+     "Spend"
     {% elsif KPI_Selector._parameter_value == 'impressions' %}
-    <p style="color:white;">&nbsp;Impressions&nbsp;</p>
+    "Impressions"
     {% elsif KPI_Selector._parameter_value == 'bpq' %}
-    <p style="color:white;">&nbsp;Brand Product Queries&nbsp;</p>
+    "Brand Product Queries"
     {% elsif KPI_Selector._parameter_value == 'cpm' %}
-    <p style="color:white;">&nbsp;CPM&nbsp;</p>
+    "CPM"
     {% elsif KPI_Selector._parameter_value == 'clicks' %}
-    <p style="color:white;">&nbsp;Clicks&nbsp;</p>
+    "Clicks"
     {% elsif KPI_Selector._parameter_value == 'ctr' %}
-     <p style="color:white;">&nbsp;CTR&nbsp;</p>
+     "CTR"
     {% elsif KPI_Selector._parameter_value == 'cf_atc_rate' %}
-    <p style="color:white;">&nbsp;CF ATC Rate&nbsp;</p>
+    "CF ATC Rate"
     {% elsif KPI_Selector._parameter_value == 'cf_cpatc' %}
-    <p style="color:white;">&nbsp;CF CPATC&nbsp;</p>
+    "CF CPATC"
     {% elsif KPI_Selector._parameter_value == 'cf_sales' %}
-    <p style="color:white;">&nbsp;CF Sales&nbsp;</p>
+    "CF Sales"
     {% elsif KPI_Selector._parameter_value == 'cf_cac' %}
-    <p style="color:white;">&nbsp;CF CAC&nbsp;</p>
+    "CF CAC"
     {% else %}
-    <p style="color:white;">&nbsp;CF CVR&nbsp;</p>
+    "CF CVR"
     {% endif %};;
+    html:<p style="color:white;">&nbsp;{{rendered_value}}&nbsp;</p> ;;
 
   }
 
