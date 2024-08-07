@@ -966,7 +966,7 @@ view: cross_channel_custom_timeframe {
 
   measure: CF_CPATC_variance {
     type: number
-    value_format: "0.00\%"
+    value_format: "0.00\%;0.00%"
     sql: (${CF_CPATC_a} - ${CF_CPATC_b})/${CF_CPATC_b} ;;
   }
 
