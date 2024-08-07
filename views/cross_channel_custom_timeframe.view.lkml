@@ -1016,7 +1016,7 @@ view: cross_channel_custom_timeframe {
   type: count
   group_label: "Report Elements"
   html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662, #000000); color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #1b1662); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1026,7 +1026,7 @@ view: cross_channel_custom_timeframe {
                   <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_a._rendered_value}}</div><br>
                   <div style="font-size: 1em;">Prior</div>
                   <div style="font-size: 1.5em;">{{cross_channel_custom_timeframe.spend_b._rendered_value}}</div><br>
-                  <div style="font-size: .1em;">Variance</div>
+                  <div style="font-size: 1em;">Variance</div>
                   <div style="font-size: 1.5em;">
                     {% if cross_channel_custom_timeframe.spend_variance._value > 0 %}
                        <p style="color:green;">&#8679;&nbsp;{{ cross_channel_custom_timeframe.spend_variance._rendered_value }}</p>
