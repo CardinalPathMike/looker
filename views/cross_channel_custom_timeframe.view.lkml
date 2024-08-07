@@ -1006,8 +1006,8 @@ view: cross_channel_custom_timeframe {
     type: count
     html:
       <div class="vis" >
-          <div style="display:inline-block; width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="display:inline-block; width=49%;"><span><b>MEDIA THAT MOVES WITH YOU</b><span></div><div style="display:inline-block; width:49%"><span>dentsu | PELOTON</span></div>
+          <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+            <div style="width=49%;"><span><b>MEDIA THAT MOVES WITH YOU</b><span></div><div style="width:49%"><span>dentsu | PELOTON</span></div>
        </div>
       </div>;;
   }
@@ -1214,7 +1214,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
+          <div class="vis-single-value" style="background-image: linear-gradient(to right, #000000, #91AA2d); color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1247,7 +1247,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-          <div class="vis-single-value" style="background-image: linear-gradient(to right, #000000, #91AA2d); color:#ffffff">
+            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
             <p>
               <font color="white">
                 <center>
@@ -1346,7 +1346,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
+            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
             <p>
               <font color="white">
                 <center>
@@ -1379,7 +1379,7 @@ view: cross_channel_custom_timeframe {
     type: count
     group_label: "Report Elements"
     html: <div class="vis">
-            <div class="vis-single-value" style="background-color:#91AA2d; color:#000000">
+            <div class="vis-single-value" style="background-color:#000000; color:#ffffff">
             <p>
               <font color="white">
                 <center>
