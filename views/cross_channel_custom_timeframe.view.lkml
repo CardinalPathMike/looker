@@ -1128,7 +1128,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=49%; text-align:left"><span><b>MEDIA THAT MOVES WITH YOU</b></span><span>dentsu | PELOTON</span></div>
+            <div><span style="width=49%; text-align:left"><b>MEDIA THAT MOVES WITH YOU</b></span><spanstyle="width=49%; text-align:right">dentsu | PELOTON</span></div>
        </div>
       </div>;;
   }
@@ -1535,7 +1535,7 @@ view: cross_channel_custom_timeframe {
     html:
       <div class="vis" >
           <div style="width=100% background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="width=5em;text-align:left"><span><b>{{ KPI_Selector._parameter_value }} from</b></span></div>
+            <div style="width=5em;text-align:left"><b> {{ cross_channel_custom_timeframe.KPI_Selector._parameter_value }} from</b></div>
        </div>
       </div>;;
   }
