@@ -1162,13 +1162,13 @@ view: cross_channel_custom_timeframe {
   }
 
 ### Build Out the Report
-##  class="vis"
+##
   measure: kpi_banner {
     type: count
     html:
-      <div>
+      <div class="vis">
          <div style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-          <div style="display: grid; justify-content: space-between;  grid-template-columns: 100px auto; gap: 10px;">
+          <div style="display: grid; justify-content: space-between;  grid-template-columns: 100px auto; gap: 10px; !important">
             <div><b>MEDIA&nbsp;THAT&nbsp;MOVES&nbsp;WITH&nbsp;YOU</b></div>
                 <div>dentsu&nbsp;|&nbsp;PELOTON</div>
              </div>
