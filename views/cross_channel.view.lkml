@@ -8,6 +8,7 @@ view: cross_channel {
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
 
+
   dimension_group: week {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
@@ -415,16 +416,8 @@ view: cross_channel {
     }
     }
 
-  dimension: date_breakdown {
-    sql:
-    {% if date_granularity._parameter_value == 'day' %}
-      ${date_date}
-    {% elsif date_granularity._parameter_value == 'month' %}
-      ${date_month}
-    {% else %}
-      ${date_week}
-    {% endif %};;
-  }
+
+
 
 
 ## KPI Comparison 2
