@@ -450,7 +450,7 @@ view: cross_channel {
 
   dimension: first_date_in_period {
     type: date
-    sql: DATE_TRUNC(CURRENT_DATE(), {% parameter timeframe %});;
+    sql: DATE_TRUNC(CURRENT_DATE(), {% parameter prior_weeks_back %});;
   }
 
 
