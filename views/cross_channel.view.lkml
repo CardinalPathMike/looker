@@ -416,6 +416,42 @@ view: cross_channel {
     }
     }
 
+  parameter: prior_weeks_back {
+    type: unquoted
+    allowed_value: {
+      label: "1 Week"
+      value: "INTERVAL 1 WEEK"
+    }
+    allowed_value: {
+      label: "2 Weeks"
+      value: "INTERVAL 2 WEEK"
+    }
+    allowed_value: {
+      label: "3 Weeks"
+      value: "INTERVAL 3 WEEK"
+    }
+    allowed_value: {
+      label: "4 Weeks"
+      value: "INTERVAL 4 WEEK"
+    }
+    allowed_value: {
+      label: "5 Weeks"
+      value: "INTERVAL 5 WEEK"
+    }
+    allowed_value: {
+      label: "6 Weeks"
+      value: "INTERVAL 6 WEEK"
+    }
+
+
+  }
+
+
+
+  dimension: first_date_in_period {
+    type: date
+    sql: DATE_TRUNC(CURRENT_DATE(), {% parameter timeframe %});;
+  }
 
 
 
