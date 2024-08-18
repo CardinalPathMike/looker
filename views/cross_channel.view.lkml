@@ -232,6 +232,28 @@ view: cross_channel {
     filters: [dimension_grouping: "7s-15s"]
   }
 
+  measure: spend_filtered_16s_24s {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
+    filters: [dimension_grouping: "16s-24s"]
+  }
+
+  measure: spend_filtered_25s_30s {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
+    filters: [dimension_grouping: "25s-30s"]
+  }
+
+  measure: spend_filtered_others {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
+    filters: [dimension_grouping: "Others"]
+  }
+
+
   measure: cf_atcs {
     type: sum
     sql: ${TABLE}.`Total CF ATCs` ;;
