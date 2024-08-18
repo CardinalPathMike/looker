@@ -151,6 +151,17 @@ view: cross_channel {
     sql: ${TABLE}.Dimension ;;
   }
 
+  filter: dimension_grouping {
+      type: string
+    sql:   CASE
+    WHEN ${TABLE}.Dimension IN ('6s') THEN '6s'
+    WHEN ${TABLE}.Dimension IN ('7s','8s', '9s', '10s', '11s', '12s','13s','14s','15s') THEN '7s-15s'
+    WHEN ${TABLE}.Dimension IN ('16s','17s', '18s', '19s', '20s', '21s','22s','23s','24s') THEN '16s-24s'
+    WHEN ${TABLE}.Dimension IN ('25s','26s', '27s', '28s', '29s', '30s') THEN '25s-30s'
+    ELSE 'Others'
+    END ;;
+  }
+
   dimension: dimension_group {
     type: string
     sql:   CASE
@@ -205,6 +216,20 @@ view: cross_channel {
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.Spend ;;
+  }
+
+  measure: spend_filtered_6s {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
+    filters: [dimension_grouping: "6s"]
+    }
+
+  measure: spend_filtered_7s_15s {
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.Spend ;;
+    filters: [dimension_grouping: "7s-15s"]
   }
 
   measure: cf_atcs {
