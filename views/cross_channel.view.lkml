@@ -507,9 +507,7 @@ view: cross_channel {
     html:
     <div class="vis">
          <div class="vis-custom" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-            <div style="display: grid; justify-content: space-between;  grid-template-columns: 100px auto; gap: 10px; !important">
               <div><b>Core</b></div>
-           </div>
         </div>
     </div>;;
   }
