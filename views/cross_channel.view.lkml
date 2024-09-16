@@ -506,9 +506,7 @@ view: cross_channel {
     type: count
     html:
     <div class="vis">
-         <div class="vis-custom" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-              <h1>Core</h1>
-        </div>
+         <div class="vis-custom" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff"><b>Core</b></div>
     </div>;;
   }
 
