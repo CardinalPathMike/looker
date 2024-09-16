@@ -262,6 +262,7 @@ view: cross_channel {
   measure: cf_sales {
     type: sum
     sql: ${TABLE}.`Total CF Sales` ;;
+    label: "CF Sales"
   }
 
   measure: sessions {
