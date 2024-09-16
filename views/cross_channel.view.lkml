@@ -507,7 +507,7 @@ view: cross_channel {
     html:
     <div class="vis">
          <div class="vis-custom" style="background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-              <div><b>Core</b></div>
+              <h1>Core</h1>
         </div>
     </div>;;
   }
