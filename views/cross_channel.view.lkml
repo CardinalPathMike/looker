@@ -510,10 +510,26 @@ view: cross_channel {
       <font color="#FFFFFF"><center><b>Core</b></font>
       </div>
       </div>;;
-
-
   }
 
+  measure: Men_Banner {
+    type: count
+    html:
+    <div class="vis">
+      <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+      <font color="#FFFFFF"><center><b>Men</b></font>
+      </div>
+      </div>;;
+  }
+  measure: Latine_Banner {
+    type: count
+    html:
+    <div class="vis">
+      <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
+      <font color="#FFFFFF"><center><b>Latine</b></font>
+      </div>
+      </div>;;
+  }
 
 
 ## KPI Comparison 2
