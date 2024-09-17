@@ -517,7 +517,7 @@ view: cross_channel {
     html:
     <div class="vis">
       <div class="vis-single-value" style="font-size:30px; background-image: linear-gradient(to right, #1b1662, #000000, #91aa2d); color:#ffffff">
-      <font color="#FFFFFF"><center><b>Men</b></font>
+      <p style="float:left;"><font color="#FFFFFF"><center><b>Men</b></font></p>
       </div>
       </div>;;
   }
