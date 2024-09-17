@@ -111,7 +111,7 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/mjtcah6t532.png" width="255">
               {% elsif creative_message._value == "camila_music" and creative_variation._value == "mjblar6m554" %}
               <img src="https://storage.googleapis.com/peloton_creatives/mjblar6m554.png" width="255">
-              {% elsif creative_message._value == "jess_decision_fatigue" and creative_variation._value == "mjtcwyt531" %}
+              {% elsif creative_message._value == "jess_decision_fatigue" and creative_variation._value == "mjtcwy1t531" %}
               <img src="https://storage.googleapis.com/peloton_creatives/mjtcwyt531" width="255">
 
               <!-- MID FUNNEL -->
