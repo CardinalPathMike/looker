@@ -83,8 +83,6 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/rad_me_gusta.png" width="255">
               {% elsif creative_message._value == "carlhermommy_v4" and creative_variation._value == "ptsp347" %}
               <img src="https://storage.googleapis.com/peloton_creatives/carlhermomm_v4.png" width="255">
-              {% elsif creative_message._value == "jay_torres_v2_30dt" and creative_variation._value == "ptsp325" %}
-              <img src="https://storage.googleapis.com/peloton_creatives/jay_torres_v2_30dt.png" width="255">
               {% elsif creative_message._value == "wherever_you_call_home_sku" and creative_variation._value == "mjpaah5t553" %}
               <img src="https://storage.googleapis.com/peloton_creatives/mjpaah5t553.png" width="255">
               {% elsif creative_message._value == "jay_torres_v2_30dt" and creative_variation._value == "ptsp325" %}
