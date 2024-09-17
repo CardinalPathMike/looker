@@ -85,6 +85,10 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/carlhermomm_v4.png" width="255">
               {% elsif creative_message._value == "jay_torres_v2_30dt" and creative_variation._value == "ptsp325" %}
               <img src="https://storage.googleapis.com/peloton_creatives/jay_torres_v2_30dt.png" width="255">
+              {% elsif creative_message._value == "wherever_you_call_home_sku" and creative_variation._value == "mjpaah5t553" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/mjpaah5t553.png" width="255">
+              {% elsif creative_message._value == "jay_torres_v2_30dt" and creative_variation._value == "ptsp325" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/ptsp325.png" width="255">
 
               <!-- CAPTURE -->
               {% elsif creative_message._value == "emotional" and creative_variation._value == "ptsp294" %}
@@ -103,6 +107,12 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/camila_music.png" width="255">
               {% elsif creative_message._value == "functional" and creative_variation._value == "ptsp293" %}
               <img src="https://storage.googleapis.com/peloton_creatives/functional.png" width="255">
+              {% elsif creative_message._value == "jj_in_your_dms" and creative_variation._value == "mjtcah6t532" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/mjtcah6t532.png" width="255">
+              {% elsif creative_message._value == "camila_music" and creative_variation._value == "mjblar6m554" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/mjblar6m554.png" width="255">
+              {% elsif creative_message._value == "jess_decision_fatigue" and creative_variation._value == "mjtcwyt531" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/mjtcwyt531" width="255">
 
               <!-- MID FUNNEL -->
               {% elsif creative_message._value == "camila_bangers" and creative_variation._value == "mjtlie5t114" %}
@@ -115,6 +125,13 @@ view: cross_channel {
               <img src="https://storage.googleapis.com/peloton_creatives/30dht_sp.png" width="255">
               {% elsif creative_message._value == "armani_dex" and creative_variation._value == "mjamco3t514" %}
               <img src="https://storage.googleapis.com/peloton_creatives/armani_dex.png" width="255">
+              {% elsif creative_message._value == "promo_urgency_6s" and creative_variation._value == "nypt326" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/nypt326.png" width="255">
+              {% elsif creative_message._value == "kirsten_ferguson" and creative_variation._value == "pton282" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/pton282.png" width="255">
+              {% elsif creative_message._value == "spencerlevee_v1_950_off" and creative_variation._value == "pthy142" %}
+              <img src="https://storage.googleapis.com/peloton_creatives/pthy142.png" width="255">
+
 
               <!-- ELSE -->
               {% else %}
